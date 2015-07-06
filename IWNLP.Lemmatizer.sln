@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWNLP.Lemmatizer", "IWNLP.Lemmatizer\IWNLP.Lemmatizer.csproj", "{0DEDDF39-7F84-4081-9E3D-1BEB9D950479}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWNLP.Lemmatizer.Evaluation", "IWNLP.Lemmatizer.Evaluation\IWNLP.Lemmatizer.Evaluation.csproj", "{0404C0D1-8DBD-43AD-90A2-A26A863DBCE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWNLP.Lemmatizer.Converter", "IWNLP.Lemmatizer.Converter\IWNLP.Lemmatizer.Converter.csproj", "{DA3FED24-3AC3-4CCA-9B70-DB708DC70F5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWNLP.Lemmatizer.Models", "IWNLP.Lemmatizer.Models\IWNLP.Lemmatizer.Models.csproj", "{DCAAF07C-B387-4C13-B18F-812767A828A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IWNLP.Lemmatizer.Predictor", "IWNLP.Lemmatizer.Predictor\IWNLP.Lemmatizer.Predictor.csproj", "{F2935DC7-4A7B-405D-8FAB-00DF21909D42}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DEDDF39-7F84-4081-9E3D-1BEB9D950479}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DEDDF39-7F84-4081-9E3D-1BEB9D950479}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DEDDF39-7F84-4081-9E3D-1BEB9D950479}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DEDDF39-7F84-4081-9E3D-1BEB9D950479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0404C0D1-8DBD-43AD-90A2-A26A863DBCE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0404C0D1-8DBD-43AD-90A2-A26A863DBCE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0404C0D1-8DBD-43AD-90A2-A26A863DBCE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0404C0D1-8DBD-43AD-90A2-A26A863DBCE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA3FED24-3AC3-4CCA-9B70-DB708DC70F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA3FED24-3AC3-4CCA-9B70-DB708DC70F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA3FED24-3AC3-4CCA-9B70-DB708DC70F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA3FED24-3AC3-4CCA-9B70-DB708DC70F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCAAF07C-B387-4C13-B18F-812767A828A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCAAF07C-B387-4C13-B18F-812767A828A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCAAF07C-B387-4C13-B18F-812767A828A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCAAF07C-B387-4C13-B18F-812767A828A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2935DC7-4A7B-405D-8FAB-00DF21909D42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2935DC7-4A7B-405D-8FAB-00DF21909D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2935DC7-4A7B-405D-8FAB-00DF21909D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2935DC7-4A7B-405D-8FAB-00DF21909D42}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
