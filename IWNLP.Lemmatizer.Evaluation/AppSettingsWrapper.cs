@@ -8,6 +8,16 @@ namespace IWNLP.Lemmatizer.Evaluation
 {
     public class AppSettingsWrapper
     {
+        public static String IWNLPXMLPath
+        {
+            get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPXMLPath"]; }
+        }
+
+        public static String IWNLPLemmatizerXMLPath
+        {
+            get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPLemmatizerXMLPath"]; }
+        }
+
         public static String MateTueba
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MateTueba"]; }

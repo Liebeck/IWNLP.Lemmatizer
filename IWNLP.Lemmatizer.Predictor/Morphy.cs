@@ -10,7 +10,8 @@ namespace IWNLP.Lemmatizer.Predictor
 {
     public class Morphy
     {
-        Dictionary<String, String> morphyDictionary = new Dictionary<string, string>();
+        Dictionary<String, List<String>> morphyDictionary = new Dictionary<string, List<String>>();
+
 
         public void InitMorphy(String pathCSV)
         {
@@ -20,10 +21,12 @@ namespace IWNLP.Lemmatizer.Predictor
                 string[] splitted = line.Split(new String[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
                 if (!morphyDictionary.ContainsKey(splitted[0]))
                 {
-                    morphyDictionary.Add(splitted[0], splitted[1]);
+                    morphyDictionary.Add(splitted[0], new List<String>());
                 }
+                morphyDictionary[splitted[0]].Add(splitted[1]);
             }
         }
+
 
         public void ProcessSentence(CoNLLSentence sentence)
         {
@@ -34,7 +37,7 @@ namespace IWNLP.Lemmatizer.Predictor
                 if(morphyDictionary.ContainsKey(token.Form))
                 {
                     token.PredictedLemmas = new List<string>();
-                    token.PredictedLemmas.Add(morphyDictionary[token.Form]);
+                    token.PredictedLemmas = morphyDictionary[token.Form];
                 }
             }
         }

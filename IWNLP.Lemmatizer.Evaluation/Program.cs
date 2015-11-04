@@ -11,10 +11,9 @@ namespace IWNLP.Lemmatizer.Evaluation
         static void Main(string[] args)
         {
 
-            //String lemmatizerPath = @"c:\\Code\\IWNLP.Lemmatizer\\Models\\iwnlp_lemmatizer.xml";
-            //Lemmatizer a = new Lemmatizer();
-            //a.CreateMapping("c:\\Datasets\\Wiktionary\\parsedOutput.xml");
-            //a.Save(lemmatizerPath);
+            Lemmatizer a = new Lemmatizer();
+            a.CreateMapping(AppSettingsWrapper.IWNLPXMLPath);
+            a.Save(AppSettingsWrapper.IWNLPLemmatizerXMLPath);
 
             CorpusEvaluation evaluation = new CorpusEvaluation();
             evaluation.Evaluate(AppSettingsWrapper.IWNLPTiger, "IWNLP - Tiger");

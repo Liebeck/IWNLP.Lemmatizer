@@ -16,8 +16,8 @@ namespace IWNLP.Lemmatizer.Predictor
         static void Main(string[] args)
         {
             TreeTagger treeTagger = new TreeTagger();
-            MateTools mate = new MateTools();
-            mate.InitMateTools();
+            //MateTools mate = new MateTools();
+            //mate.InitMateTools();
 
             List<CoNLLSentence> tiger = XMLSerializer.Deserialize<List<CoNLLSentence>>(AppSettingsWrapper.TigerPathUntagged);
             List<CoNLLSentence> tueba = XMLSerializer.Deserialize<List<CoNLLSentence>>(AppSettingsWrapper.TuebaPathUntagged);
@@ -35,8 +35,8 @@ namespace IWNLP.Lemmatizer.Predictor
             LemmatizeMorphy(tueba, AppSettingsWrapper.MorphyTueba);
             LemmatizeMorphy(hdt, AppSettingsWrapper.MorphyHdt);
 
-            LemmatizeMate(tueba, AppSettingsWrapper.MateTueba, mate);
-            LemmatizeMate(hdt, AppSettingsWrapper.MateHdt, mate);
+            //LemmatizeMate(tueba, AppSettingsWrapper.MateTueba, mate);
+            //LemmatizeMate(hdt, AppSettingsWrapper.MateHdt, mate);
 
         }
 
@@ -92,7 +92,7 @@ namespace IWNLP.Lemmatizer.Predictor
             {
                 CoNLLSentence sentence = corpus[i];
                 morphy.ProcessSentence(sentence);
-                //Console.WriteLine(i);
+                Console.WriteLine(i);
             }
             XMLSerializer.Serialize<List<CoNLLSentence>>(corpus, exportPath);
 
