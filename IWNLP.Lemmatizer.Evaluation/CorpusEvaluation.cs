@@ -30,8 +30,7 @@ namespace IWNLP.Lemmatizer.Evaluation
 
             int nounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN");
             int verbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V"));
-            int adjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "ADJA" || x.POS == "ADJD");
-
+            int adjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"));// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
 
             //Dictionary<String, int> wrongMappings = new Dictionary<string, int>();
             int nounCorrectLemmatizedCount = 0;
@@ -85,6 +84,10 @@ namespace IWNLP.Lemmatizer.Evaluation
                     }
                     else if (token.POS == "ADJA" || token.POS == "ADJD")
                     {
+                        if (token.Lemma == "NULL" && token.Form != "NULL")  // ~ 2000 adjectives in the HDT corpus have "NULL" as lemma. Ignore them for the evaluation
+                        {
+                            continue;
+                        }
                         if (IsExactMatch(token.Lemma, token.PredictedLemmas))
                         {
                             adjectiveCorrectLemmatizedCount++;
@@ -106,6 +109,11 @@ namespace IWNLP.Lemmatizer.Evaluation
             }
 
             //var wrongMappingSorted = wrongMappings.OrderByDescending(x => x.Value);
+
+            //foreach (var entry in wrongMappingSorted.Take(50)) 
+            //{
+            //    Console.WriteLine(entry.Key + ": " + entry.Value);
+            //}
 
 
             double nounPercent = ((double)nounCorrectLemmatizedCount) / nounCount;
@@ -194,6 +202,10 @@ namespace IWNLP.Lemmatizer.Evaluation
                     }
                     else if (token.POS == "ADJA" || token.POS == "ADJD")
                     {
+                        if (token.Lemma == "NULL" && token.Form != "NULL") // ~ 2000 adjectives in the HDT corpus have "NULL" as lemma. Ignore them for the evaluation
+                        {
+                            continue;
+                        }
                         if (!(token.PredictedLemmas == null || token.PredictedLemmas.Count == 0))
                         {
                             if (token.PredictedLemmas.Count == 1)
@@ -361,6 +373,10 @@ namespace IWNLP.Lemmatizer.Evaluation
                     }
                     else if (token.POS == "ADJA" || token.POS == "ADJD")
                     {
+                        if (token.Lemma == "NULL" && token.Form != "NULL") // ~ 2000 adjectives in the HDT corpus have "NULL" as lemma. Ignore them for the evaluation
+                        {
+                            continue;
+                        }
                         if (!(token.PredictedLemmas == null || token.PredictedLemmas.Count == 0))
                         {
                             if (token.PredictedLemmas.Count == 1)
