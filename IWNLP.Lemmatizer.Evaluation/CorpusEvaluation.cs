@@ -45,11 +45,11 @@ namespace IWNLP.Lemmatizer.Evaluation
                     CoNLLToken token = sentence.Tokens[j];
                     if (token.POS == "NN")
                     {
-                        if (IsExactMatch(token.Lemma, token.PredictedLemmas))
+                        if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                         {
                             nounCorrectLemmatizedCount++;
                         }
-                        //else 
+                        //else
                         //{
                         //    if (token.PredictedLemmas != null && token.PredictedLemmas.Count == 1)
                         //    {
@@ -59,17 +59,17 @@ namespace IWNLP.Lemmatizer.Evaluation
                         //            wrongMappings.Add(key, 0);
                         //        }
                         //        wrongMappings[key] = wrongMappings[key] + 1;
-                        //    }                        
+                        //    }
                         //}
                     }
                     else if (token.POS.StartsWith("V"))
                     {
                         NormalizeVerbToken(token);
-                        if (IsExactMatch(token.Lemma, token.PredictedLemmas))
+                        if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                         {
                             verbCorrectLemmatizedCount++;
                         }
-                        //else 
+                        //else
                         //{
                         //    if (token.PredictedLemmas != null && token.PredictedLemmas.Count == 1)
                         //    {
@@ -79,7 +79,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         //            wrongMappings.Add(key, 0);
                         //        }
                         //        wrongMappings[key] = wrongMappings[key] + 1;
-                        //    }                        
+                        //    }
                         //}
                     }
                     else if (token.POS == "ADJA" || token.POS == "ADJD")
@@ -88,7 +88,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             continue;
                         }
-                        if (IsExactMatch(token.Lemma, token.PredictedLemmas))
+                        if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                         {
                             adjectiveCorrectLemmatizedCount++;
                         }
@@ -110,7 +110,7 @@ namespace IWNLP.Lemmatizer.Evaluation
 
             //var wrongMappingSorted = wrongMappings.OrderByDescending(x => x.Value);
 
-            //foreach (var entry in wrongMappingSorted.Take(50)) 
+            //foreach (var entry in wrongMappingSorted.Take(100))
             //{
             //    Console.WriteLine(entry.Key + ": " + entry.Value);
             //}
@@ -151,7 +151,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (token.PredictedLemmas.Count == 1)
                             {
-                                if (IsExactMatch(token.Lemma, token.PredictedLemmas))
+                                if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
                                     nounCorrectLemmatizedCount++;
                                 }
@@ -179,7 +179,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (token.PredictedLemmas.Count == 1)
                             {
-                                if (IsExactMatch(token.Lemma, token.PredictedLemmas))
+                                if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
                                     verbCorrectLemmatizedCount++;
                                 }
@@ -210,7 +210,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (token.PredictedLemmas.Count == 1)
                             {
-                                if (IsExactMatch(token.Lemma, token.PredictedLemmas))
+                                if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
                                     adjectiveCorrectLemmatizedCount++;
                                 }
@@ -246,23 +246,7 @@ namespace IWNLP.Lemmatizer.Evaluation
             Console.WriteLine("");
         }
 
-        protected bool IsExactMatch(String goldLemma, List<String> lemmas)
-        {
-            if (lemmas == null || lemmas.Count == 0)
-            {
-                return false;
-            }
-            if (lemmas.Count > 1)
-            {
-                return false;
-            }
-            else
-            {
-                return goldLemma == lemmas[0];
-            }
-        }
-
-        //protected bool IsLowerCaseExactMatch(String goldLemma, List<String> lemmas)
+        //protected bool IsExactMatch(String goldLemma, List<String> lemmas)
         //{
         //    if (lemmas == null || lemmas.Count == 0)
         //    {
@@ -274,9 +258,25 @@ namespace IWNLP.Lemmatizer.Evaluation
         //    }
         //    else
         //    {
-        //        return goldLemma.ToLower() == lemmas[0].ToLower();
+        //        return goldLemma == lemmas[0];
         //    }
         //}
+
+        protected bool IsLowerCaseExactMatch(String goldLemma, List<String> lemmas)
+        {
+            if (lemmas == null || lemmas.Count == 0)
+            {
+                return false;
+            }
+            if (lemmas.Count > 1)
+            {
+                return false;
+            }
+            else
+            {
+                return goldLemma.ToLower() == lemmas[0].ToLower();
+            }
+        }
 
         //protected bool IsExactMatchOrGuess(String goldLemma, String form, List<String> lemmas)
         //{
@@ -322,14 +322,14 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (token.PredictedLemmas.Count == 1)
                             {
-                                if (IsExactMatch(token.Lemma, token.PredictedLemmas))
+                                if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
                                     nounCorrectLemmatizedCount++;
                                 }
                             }
                             else // if more than one lemma is found, compare with the second resource
                             {
-                                if (IsExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
+                                if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                                 {
                                     nounCorrectLemmatizedCount++;
                                 }
@@ -337,7 +337,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         }
                         else // if no lemma is found, compare with the second resource
                         {
-                            if (IsExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
+                            if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                             {
                                 nounCorrectLemmatizedCount++;
                             }
@@ -350,14 +350,14 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (token.PredictedLemmas.Count == 1)
                             {
-                                if (IsExactMatch(token.Lemma, token.PredictedLemmas))
+                                if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
                                     verbCorrectLemmatizedCount++;
                                 }
                             }
                             else // if more than one lemma is found, compare with the second resource
                             {
-                                if (IsExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
+                                if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                                 {
                                     verbCorrectLemmatizedCount++;
                                 }
@@ -365,7 +365,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         }
                         else // if no lemma is found, compare with the second resource
                         {
-                            if (IsExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
+                            if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                             {
                                 verbCorrectLemmatizedCount++;
                             }
@@ -381,14 +381,14 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (token.PredictedLemmas.Count == 1)
                             {
-                                if (IsExactMatch(token.Lemma, token.PredictedLemmas))
+                                if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
                                     adjectiveCorrectLemmatizedCount++;
                                 }
                             }
                             else // if more than one lemma is found, compare with the second resource
                             {
-                                if (IsExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
+                                if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                                 {
                                     adjectiveCorrectLemmatizedCount++;
                                 }
@@ -396,7 +396,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         }
                         else // if no lemma is found, compare with the second resource
                         {
-                            if (IsExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
+                            if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                             {
                                 adjectiveCorrectLemmatizedCount++;
                             }

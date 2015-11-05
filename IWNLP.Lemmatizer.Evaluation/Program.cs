@@ -11,9 +11,9 @@ namespace IWNLP.Lemmatizer.Evaluation
         static void Main(string[] args)
         {
 
-            Lemmatizer a = new Lemmatizer();
-            a.CreateMapping(AppSettingsWrapper.IWNLPXMLPath);
-            a.Save(AppSettingsWrapper.IWNLPLemmatizerXMLPath);
+            //Lemmatizer a = new Lemmatizer();
+            //a.CreateMapping(AppSettingsWrapper.IWNLPXMLPath);
+            //a.Save(AppSettingsWrapper.IWNLPLemmatizerXMLPath);
 
             CorpusEvaluation evaluation = new CorpusEvaluation();
             evaluation.Evaluate(AppSettingsWrapper.IWNLPTiger, "IWNLP - Tiger");
