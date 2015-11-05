@@ -133,7 +133,7 @@ namespace IWNLP.Lemmatizer.Evaluation
 
             int nounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN");
             int verbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V"));
-            int adjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "ADJA" || x.POS == "ADJD");
+            int adjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"));// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
 
             int nounCorrectLemmatizedCount = 0;
             int verbCorrectLemmatizedCount = 0;
@@ -304,7 +304,7 @@ namespace IWNLP.Lemmatizer.Evaluation
 
             int nounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN");
             int verbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V"));
-            int adjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "ADJA" || x.POS == "ADJD");
+            int adjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"));// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
 
             int nounCorrectLemmatizedCount = 0;
             int verbCorrectLemmatizedCount = 0;
