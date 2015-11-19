@@ -63,10 +63,10 @@ namespace IWNLP.Lemmatizer
                 else if (entry is Verb)
                 {
                     Verb verb = (Verb)entry;
-                    AddFormsToDictionary(verb.Gegenwart_Ich, entry.Text);
-                    AddFormsToDictionary(verb.Gegenwart_Du, entry.Text);
-                    AddFormsToDictionary(verb.Gegenwart_ErSieEs, entry.Text);
-                    AddFormsToDictionary(verb.Vergangenheit1_Ich, entry.Text);
+                    AddFormsToDictionary(verb.Präsens_Ich, entry.Text);
+                    AddFormsToDictionary(verb.Präsens_Du, entry.Text);
+                    AddFormsToDictionary(verb.Präsens_ErSieEs, entry.Text);
+                    AddFormsToDictionary(verb.Präteritum_ich, entry.Text);
                     AddFormsToDictionary(verb.KonjunktivII_Ich, entry.Text);
 
                     AddImperativeFormsToDictionary(verb.ImperativSingular, entry.Text);
