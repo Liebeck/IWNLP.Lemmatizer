@@ -47,6 +47,8 @@
   <ItemGroup>
     <Compile Include="AppSettingsWrapper.cs" />
     <Compile Include="CorpusEvaluation.cs" />
+    <Compile Include="DetailedLookupResults.cs" />
+    <Compile Include="LookupItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

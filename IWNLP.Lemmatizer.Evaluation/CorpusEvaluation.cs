@@ -23,19 +23,18 @@ namespace IWNLP.Lemmatizer.Evaluation
             }
         }
 
-        public void Evaluate(String path, String comment)
+
+        public DetailedLookupResults Evaluate(String path, String comment)
         {
             Console.WriteLine(comment);
             List<CoNLLSentence> sentences = XMLSerializer.Deserialize<List<CoNLLSentence>>(path);
 
-            int nounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN");
-            int verbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V"));
-            int adjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"));// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
-
-            //Dictionary<String, int> wrongMappings = new Dictionary<string, int>();
-            int nounCorrectLemmatizedCount = 0;
-            int verbCorrectLemmatizedCount = 0;
-            int adjectiveCorrectLemmatizedCount = 0;
+            DetailedLookupResults result = new DetailedLookupResults()
+            {
+                TotalNounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN"),
+                TotalVerbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V")),
+                TotalAdjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"))// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
+            };
 
             for (int i = 0; i < sentences.Count; i++)
             {
@@ -47,40 +46,24 @@ namespace IWNLP.Lemmatizer.Evaluation
                     {
                         if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                         {
-                            nounCorrectLemmatizedCount++;
+                            result.NounsCorrectlyLemmatizedCount++;
                         }
-                        //else
-                        //{
-                        //    if (token.PredictedLemmas != null && token.PredictedLemmas.Count == 1)
-                        //    {
-                        //        String key = String.Format("{0}->{1} != {2}", token.Form, token.PredictedLemmas[0], token.Lemma);
-                        //        if (!wrongMappings.ContainsKey(key))
-                        //        {
-                        //            wrongMappings.Add(key, 0);
-                        //        }
-                        //        wrongMappings[key] = wrongMappings[key] + 1;
-                        //    }
-                        //}
+                        else 
+                        {
+                            result.AddLookup(PartOfSpeech.Noun, token);
+                        }
                     }
                     else if (token.POS.StartsWith("V"))
                     {
                         NormalizeVerbToken(token);
                         if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                         {
-                            verbCorrectLemmatizedCount++;
+                            result.VerbsCorrectlyLemmatizedCount++;
                         }
-                        //else
-                        //{
-                        //    if (token.PredictedLemmas != null && token.PredictedLemmas.Count == 1)
-                        //    {
-                        //        String key = String.Format("{0}->{1} != {2}", token.Form, token.PredictedLemmas[0], token.Lemma);
-                        //        if (!wrongMappings.ContainsKey(key))
-                        //        {
-                        //            wrongMappings.Add(key, 0);
-                        //        }
-                        //        wrongMappings[key] = wrongMappings[key] + 1;
-                        //    }
-                        //}
+                        else
+                        {
+                            result.AddLookup(PartOfSpeech.Verb, token);
+                        }
                     }
                     else if (token.POS == "ADJA" || token.POS == "ADJD")
                     {
@@ -90,7 +73,11 @@ namespace IWNLP.Lemmatizer.Evaluation
                         }
                         if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                         {
-                            adjectiveCorrectLemmatizedCount++;
+                            result.AdjectivesCorrectlyLemmatizedCount++;
+                        }
+                        else
+                        {
+                            result.AddLookup(PartOfSpeech.Adjective, token);
                         }
                         //else
                         //{
@@ -115,29 +102,21 @@ namespace IWNLP.Lemmatizer.Evaluation
             //    Console.WriteLine(entry.Key + ": " + entry.Value);
             //}
 
-
-            double nounPercent = ((double)nounCorrectLemmatizedCount) / nounCount;
-            double verbPercent = ((double)verbCorrectLemmatizedCount) / verbCount;
-            double adjectivePercent = ((double)adjectiveCorrectLemmatizedCount) / adjectiveCount;
-
-            Console.WriteLine(String.Format("Nouns: {0}/{1} = {2}", nounCorrectLemmatizedCount, nounCount, String.Format("{0:0.000}", nounPercent)));
-            Console.WriteLine(String.Format("Verbs: {0}/{1} = {2}", verbCorrectLemmatizedCount, verbCount, String.Format("{0:0.000}", verbPercent)));
-            Console.WriteLine(String.Format("Adjectives: {0}/{1} = {2}", adjectiveCorrectLemmatizedCount, adjectiveCount, String.Format("{0:0.000}", adjectivePercent)));
-            Console.WriteLine("");
+            Console.WriteLine(result.ToString());
+            return result;
         }
 
-        public void EvaluateWithKeep(String path, String comment)
+        public DetailedLookupResults EvaluateWithKeep(String path, String comment)
         {
             Console.WriteLine(comment);
             List<CoNLLSentence> sentences = XMLSerializer.Deserialize<List<CoNLLSentence>>(path);
 
-            int nounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN");
-            int verbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V"));
-            int adjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"));// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
-
-            int nounCorrectLemmatizedCount = 0;
-            int verbCorrectLemmatizedCount = 0;
-            int adjectiveCorrectLemmatizedCount = 0;
+            DetailedLookupResults result = new DetailedLookupResults()
+            {
+                TotalNounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN"),
+                TotalVerbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V")),
+                TotalAdjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"))// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
+            };
 
             for (int i = 0; i < sentences.Count; i++)
             {
@@ -153,23 +132,26 @@ namespace IWNLP.Lemmatizer.Evaluation
                             {
                                 if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
-                                    nounCorrectLemmatizedCount++;
+                                    result.NounsCorrectlyLemmatizedCount++;
                                 }
+                                else { result.AddWrongLookup(PartOfSpeech.Noun, token.Form, token.Lemma, token.PredictedLemmas); }
                             }
                             else // more than one form, use "keep" approach
                             {
                                 if (token.Lemma == token.Form)
                                 {
-                                    nounCorrectLemmatizedCount++;
+                                    result.NounsCorrectlyLemmatizedCount++;
                                 }
+                                else { result.AddWrongLookup(PartOfSpeech.Noun, token.Form, token.Lemma, new List<string>() { token.Form });}
                             }
                         }
                         else // if no entry is found, use the "keep" approach
                         {
                             if (token.Lemma == token.Form)
                             {
-                                nounCorrectLemmatizedCount++;
+                                result.NounsCorrectlyLemmatizedCount++;
                             }
+                            else { result.AddWrongLookup(PartOfSpeech.Noun, token.Form, token.Lemma, new List<string>() { token.Form });}
                         }
                     }
                     else if (token.POS.StartsWith("V"))
@@ -181,23 +163,26 @@ namespace IWNLP.Lemmatizer.Evaluation
                             {
                                 if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
-                                    verbCorrectLemmatizedCount++;
+                                    result.VerbsCorrectlyLemmatizedCount++;
                                 }
+                                else { result.AddWrongLookup(PartOfSpeech.Verb, token.Form, token.Lemma, token.PredictedLemmas); }
                             }
                             else // more than one form found, use "keep" approach
                             {
                                 if (token.Lemma == token.Form)
                                 {
-                                    verbCorrectLemmatizedCount++;
+                                    result.VerbsCorrectlyLemmatizedCount++;
                                 }
+                                else { result.AddWrongLookup(PartOfSpeech.Verb, token.Form, token.Lemma, new List<string>() { token.Form }); }
                             }
                         }
                         else // no entry found, use the "keep" approach
                         {
                             if (token.Lemma == token.Form)
                             {
-                                verbCorrectLemmatizedCount++;
+                                result.VerbsCorrectlyLemmatizedCount++;
                             }
+                            else { result.AddWrongLookup(PartOfSpeech.Verb, token.Form, token.Lemma, new List<string>() { token.Form }); }
                         }
                     }
                     else if (token.POS == "ADJA" || token.POS == "ADJD")
@@ -212,15 +197,17 @@ namespace IWNLP.Lemmatizer.Evaluation
                             {
                                 if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
-                                    adjectiveCorrectLemmatizedCount++;
+                                    result.AdjectivesCorrectlyLemmatizedCount++;
                                 }
+                                else { result.AddWrongLookup(PartOfSpeech.Adjective, token.Form, token.Lemma, token.PredictedLemmas); }
                             }
                             else // more than one form found, use "keep" approach
                             {
                                 if (token.Lemma == token.Form)
                                 {
-                                    adjectiveCorrectLemmatizedCount++;
+                                    result.AdjectivesCorrectlyLemmatizedCount++;
                                 }
+                                else { result.AddWrongLookup(PartOfSpeech.Adjective, token.Form, token.Lemma, new List<string>() { token.Form }); }
                             }
 
                         }
@@ -228,22 +215,15 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (token.Lemma == token.Form)
                             {
-                                adjectiveCorrectLemmatizedCount++;
+                                result.AdjectivesCorrectlyLemmatizedCount++;
                             }
+                            else { result.AddWrongLookup(PartOfSpeech.Adjective, token.Form, token.Lemma, new List<string>() { token.Form }); }
                         }
                     }
                 }
             }
-
-
-            double nounPercent = ((double)nounCorrectLemmatizedCount) / nounCount;
-            double verbPercent = ((double)verbCorrectLemmatizedCount) / verbCount;
-            double adjectivePercent = ((double)adjectiveCorrectLemmatizedCount) / adjectiveCount;
-
-            Console.WriteLine(String.Format("Nouns: {0}/{1} = {2}", nounCorrectLemmatizedCount, nounCount, String.Format("{0:0.000}", nounPercent)));
-            Console.WriteLine(String.Format("Verbs: {0}/{1} = {2}", verbCorrectLemmatizedCount, verbCount, String.Format("{0:0.000}", verbPercent)));
-            Console.WriteLine(String.Format("Adjectives: {0}/{1} = {2}", adjectiveCorrectLemmatizedCount, adjectiveCount, String.Format("{0:0.000}", adjectivePercent)));
-            Console.WriteLine("");
+            Console.WriteLine(result.ToString());
+            return result;
         }
 
         //protected bool IsExactMatch(String goldLemma, List<String> lemmas)
@@ -296,19 +276,18 @@ namespace IWNLP.Lemmatizer.Evaluation
 
 
 
-        public void EvaluateTwoResources(String path, String path2, String comment)
+        public DetailedLookupResults EvaluateTwoResources(String path, String path2, String comment)
         {
             Console.WriteLine(comment);
             List<CoNLLSentence> sentences = XMLSerializer.Deserialize<List<CoNLLSentence>>(path);
             List<CoNLLSentence> sentences2 = XMLSerializer.Deserialize<List<CoNLLSentence>>(path2);
 
-            int nounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN");
-            int verbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V"));
-            int adjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"));// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
-
-            int nounCorrectLemmatizedCount = 0;
-            int verbCorrectLemmatizedCount = 0;
-            int adjectiveCorrectLemmatizedCount = 0;
+            DetailedLookupResults result = new DetailedLookupResults()
+            {
+                TotalNounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN"),
+                TotalVerbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V")),
+                TotalAdjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"))// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
+            };
 
             for (int i = 0; i < sentences.Count; i++)
             {
@@ -324,14 +303,14 @@ namespace IWNLP.Lemmatizer.Evaluation
                             {
                                 if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
-                                    nounCorrectLemmatizedCount++;
+                                    result.NounsCorrectlyLemmatizedCount++;
                                 }
                             }
                             else // if more than one lemma is found, compare with the second resource
                             {
                                 if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                                 {
-                                    nounCorrectLemmatizedCount++;
+                                    result.NounsCorrectlyLemmatizedCount++;
                                 }
                             }
                         }
@@ -339,7 +318,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                             {
-                                nounCorrectLemmatizedCount++;
+                                result.NounsCorrectlyLemmatizedCount++;
                             }
                         }
                     }
@@ -352,14 +331,14 @@ namespace IWNLP.Lemmatizer.Evaluation
                             {
                                 if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
-                                    verbCorrectLemmatizedCount++;
+                                    result.VerbsCorrectlyLemmatizedCount++;
                                 }
                             }
                             else // if more than one lemma is found, compare with the second resource
                             {
                                 if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                                 {
-                                    verbCorrectLemmatizedCount++;
+                                    result.VerbsCorrectlyLemmatizedCount++;
                                 }
                             }
                         }
@@ -367,7 +346,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                             {
-                                verbCorrectLemmatizedCount++;
+                                result.VerbsCorrectlyLemmatizedCount++;
                             }
                         }
                     }
@@ -383,14 +362,14 @@ namespace IWNLP.Lemmatizer.Evaluation
                             {
                                 if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                                 {
-                                    adjectiveCorrectLemmatizedCount++;
+                                    result.AdjectivesCorrectlyLemmatizedCount++;
                                 }
                             }
                             else // if more than one lemma is found, compare with the second resource
                             {
                                 if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                                 {
-                                    adjectiveCorrectLemmatizedCount++;
+                                    result.AdjectivesCorrectlyLemmatizedCount++;
                                 }
                             }
                         }
@@ -398,21 +377,14 @@ namespace IWNLP.Lemmatizer.Evaluation
                         {
                             if (IsLowerCaseExactMatch(token.Lemma, sentences2[i].Tokens[j].PredictedLemmas))
                             {
-                                adjectiveCorrectLemmatizedCount++;
+                                result.AdjectivesCorrectlyLemmatizedCount++;
                             }
                         }
                     }
                 }
             }
-
-            double nounPercent = ((double)nounCorrectLemmatizedCount) / nounCount;
-            double verbPercent = ((double)verbCorrectLemmatizedCount) / verbCount;
-            double adjectivePercent = ((double)adjectiveCorrectLemmatizedCount) / adjectiveCount;
-
-            Console.WriteLine(String.Format("Nouns: {0}/{1} = {2}", nounCorrectLemmatizedCount, nounCount, String.Format("{0:0.000}", nounPercent)));
-            Console.WriteLine(String.Format("Verbs: {0}/{1} = {2}", verbCorrectLemmatizedCount, verbCount, String.Format("{0:0.000}", verbPercent)));
-            Console.WriteLine(String.Format("Adjectives: {0}/{1} = {2}", adjectiveCorrectLemmatizedCount, adjectiveCount, String.Format("{0:0.000}", adjectivePercent)));
-            Console.WriteLine("");
+            Console.WriteLine(result.ToString());
+            return result;
         }
 
     }
