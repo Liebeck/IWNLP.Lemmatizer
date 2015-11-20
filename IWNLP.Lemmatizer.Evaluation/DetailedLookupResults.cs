@@ -48,10 +48,13 @@ namespace IWNLP.Lemmatizer.Evaluation
         {
             this.WrongNouns = new List<LookupItem>();
             this.MissedNouns = new List<LookupItem>();
+            this.AmbiguousNouns = new List<LookupItem>();
             this.WrongVerbs = new List<LookupItem>();
             this.MissedVerbs = new List<LookupItem>();
+            this.AmbiguousVerbs = new List<LookupItem>();
             this.WrongAdjectives = new List<LookupItem>();
             this.MissedAdjectives = new List<LookupItem>();
+            this.AmbiguousAdjectives = new List<LookupItem>();
         }
 
         public override string ToString()
@@ -115,19 +118,59 @@ namespace IWNLP.Lemmatizer.Evaluation
         {
             if (token.PredictedLemmas == null || (token.PredictedLemmas != null && token.PredictedLemmas.Count == 0))
             {
-                this.AddMissingLookup(PartOfSpeech.Noun, token.Form, token.POS, token.PredictedLemmas);
+                this.AddMissingLookup(pos, token.Form, token.Lemma, token.PredictedLemmas);
             }
             else
             {
                 if (token.PredictedLemmas.Count == 1)
                 {
-                    this.AddWrongLookup(PartOfSpeech.Noun, token.Form, token.POS, token.PredictedLemmas);
+                    this.AddWrongLookup(pos, token.Form, token.Lemma, token.PredictedLemmas);
                 }
                 else
                 {
-                    this.AddAmbiguousLookup(PartOfSpeech.Noun, token.Form, token.POS, token.PredictedLemmas);
+                    this.AddAmbiguousLookup(pos, token.Form, token.Lemma, token.PredictedLemmas);
                 }
             }
+        }
+
+        public String GetDetailedLookupInformation() 
+        {
+            int topCount = 30;
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("** Missed nouns **");
+            stringBuilder.Append(GetTopEntries(MissedNouns, topCount));
+            stringBuilder.AppendLine("** Missed verbs **");
+            stringBuilder.Append(GetTopEntries(MissedVerbs, topCount));
+            stringBuilder.AppendLine("** Missed adjectives **");
+            stringBuilder.Append(GetTopEntries(MissedAdjectives, topCount));
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine("** Wrong nouns **");
+            stringBuilder.Append(GetTopEntries(WrongNouns, topCount));
+            stringBuilder.AppendLine("** Wrong verbs **");
+            stringBuilder.Append(GetTopEntries(WrongVerbs, topCount));
+            stringBuilder.AppendLine("** Wrong adjectives **");
+            stringBuilder.Append(GetTopEntries(WrongAdjectives, topCount));
+            stringBuilder.AppendLine();
+            stringBuilder.AppendLine("** Ambiguous nouns **");
+            stringBuilder.Append(GetTopEntries(AmbiguousNouns, topCount));
+            stringBuilder.AppendLine("** Ambiguous verbs **");
+            stringBuilder.Append(GetTopEntries(AmbiguousVerbs, topCount));
+            stringBuilder.AppendLine("** Ambiguous adjectives **");
+            stringBuilder.Append(GetTopEntries(AmbiguousAdjectives, topCount));
+            return stringBuilder.ToString();
+        }
+
+        protected String GetTopEntries(List<LookupItem> list, int count) 
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            var topList = list.GroupBy(x => new Tuple<String, String, String>(x.Form, x.Lemma, (x.PredictedLemma != null) ? String.Join(",", x.PredictedLemma.ToArray()) : String.Empty))
+                            .OrderByDescending(x => x.Count())
+                            .Take(count);
+            foreach (var item in topList) 
+            {
+                stringBuilder.AppendLine(String.Format("{0}: {1}->{2} !={3}", item.Count(), item.Key.Item1, item.Key.Item2, item.Key.Item3));
+            }
+            return stringBuilder.ToString();
         }
     }
 

@@ -16,9 +16,10 @@ namespace IWNLP.Lemmatizer.Evaluation
             //a.Save(AppSettingsWrapper.IWNLPLemmatizerXMLPath);
 
             CorpusEvaluation evaluation = new CorpusEvaluation();
-            evaluation.Evaluate(AppSettingsWrapper.IWNLPTiger, "IWNLP - Tiger");
-            evaluation.Evaluate(AppSettingsWrapper.IWNLPTueba, "IWNLP - TüBa-D/Z");
-            evaluation.Evaluate(AppSettingsWrapper.IWNLPHdt, "IWNLP - HDT");
+            var result1 = evaluation.Evaluate(AppSettingsWrapper.IWNLPTiger, "IWNLP - Tiger");
+            Console.WriteLine(result1.GetDetailedLookupInformation());
+            var result2 = evaluation.Evaluate(AppSettingsWrapper.IWNLPTueba, "IWNLP - TüBa-D/Z");
+            var result3 = evaluation.Evaluate(AppSettingsWrapper.IWNLPHdt, "IWNLP - HDT");
 
             evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPTiger, "IWNLP + Keep: Tiger");
             evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPTueba, "IWNLP + Keep: Tüba-D/Z");
