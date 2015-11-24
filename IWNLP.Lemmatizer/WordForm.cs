@@ -12,6 +12,6 @@ namespace IWNLP.Lemmatizer
     public class WordForm
     {
         public String Form { get; set; }
-        public List<String> Lemmas { get; set; }
+        public List<LemmatizerItem> Lemmas { get; set; }
     }
 }

@@ -138,6 +138,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\IKVM_7.4.5196.0\IKVM.Runtime.JNI.dll</HintPath>
     </Reference>
+    <Reference Include="IWNLP.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\IWNLP\IWNLP.Models\bin\Debug\IWNLP.Models.dll</HintPath>
+    </Reference>
     <Reference Include="MateToolsWrapper_Lemmatize">
       <HintPath>..\MateToolsWrapper_Lemmatize.dll</HintPath>
     </Reference>

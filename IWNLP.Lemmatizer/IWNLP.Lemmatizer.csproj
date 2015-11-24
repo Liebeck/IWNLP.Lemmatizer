@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="POSString.cs" />
     <Compile Include="WordForm.cs" />
     <Compile Include="Lemmatizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
