@@ -31,7 +31,7 @@ namespace IWNLP.Lemmatizer.Evaluation
 
             DetailedLookupResults result = new DetailedLookupResults()
             {
-                TotalNounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN"),
+                TotalNounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN" && !x.Lemma.Contains("|") && !x.Lemma.Contains("_") && (x.Lemma != "unknown" && x.Form != "unknown")),
                 TotalVerbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V")),
                 TotalAdjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"))// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
             };
@@ -44,11 +44,12 @@ namespace IWNLP.Lemmatizer.Evaluation
                     CoNLLToken token = sentence.Tokens[j];
                     if (token.POS == "NN")
                     {
+                        if (token.Lemma.Contains("|") || token.Lemma.Contains("_") || (token.Lemma=="unknown" && token.Form!="unknown")) { continue; }
                         if (IsLowerCaseExactMatch(token.Lemma, token.PredictedLemmas))
                         {
                             result.NounsCorrectlyLemmatizedCount++;
                         }
-                        else 
+                        else
                         {
                             result.AddLookup(PartOfSpeech.Noun, token);
                         }
@@ -113,7 +114,7 @@ namespace IWNLP.Lemmatizer.Evaluation
 
             DetailedLookupResults result = new DetailedLookupResults()
             {
-                TotalNounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN"),
+                TotalNounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN" && !x.Lemma.Contains("|") && !x.Lemma.Contains("_") && (x.Lemma != "unknown" && x.Form != "unknown")),
                 TotalVerbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V")),
                 TotalAdjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"))// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
             };
@@ -126,6 +127,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                     CoNLLToken token = sentence.Tokens[j];
                     if (token.POS == "NN")
                     {
+                        if (token.Lemma.Contains("|") || token.Lemma.Contains("_") || (token.Lemma == "unknown" && token.Form != "unknown")) { continue; }
                         if (!(token.PredictedLemmas == null || token.PredictedLemmas.Count == 0))
                         {
                             if (token.PredictedLemmas.Count == 1)
@@ -142,7 +144,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                                 {
                                     result.NounsCorrectlyLemmatizedCount++;
                                 }
-                                else { result.AddWrongLookup(PartOfSpeech.Noun, token.Form, token.Lemma, new List<string>() { token.Form });}
+                                else { result.AddWrongLookup(PartOfSpeech.Noun, token.Form, token.Lemma, new List<string>() { token.Form }); }
                             }
                         }
                         else // if no entry is found, use the "keep" approach
@@ -151,7 +153,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                             {
                                 result.NounsCorrectlyLemmatizedCount++;
                             }
-                            else { result.AddWrongLookup(PartOfSpeech.Noun, token.Form, token.Lemma, new List<string>() { token.Form });}
+                            else { result.AddWrongLookup(PartOfSpeech.Noun, token.Form, token.Lemma, new List<string>() { token.Form }); }
                         }
                     }
                     else if (token.POS.StartsWith("V"))
@@ -284,7 +286,7 @@ namespace IWNLP.Lemmatizer.Evaluation
 
             DetailedLookupResults result = new DetailedLookupResults()
             {
-                TotalNounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN"),
+                TotalNounCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS == "NN" && !x.Lemma.Contains("|") && !x.Lemma.Contains("_") && (x.Lemma != "unknown" && x.Form != "unknown")),
                 TotalVerbCount = sentences.SelectMany(x => x.Tokens).Count(x => x.POS.StartsWith("V")),
                 TotalAdjectiveCount = sentences.SelectMany(x => x.Tokens).Count(x => (x.POS == "ADJA" || x.POS == "ADJD") && (x.Lemma != "NULL" && x.Form != "NULL"))// the second condition is for tokens in the HDT corpus that have the lemma "NULL"
             };
@@ -297,6 +299,7 @@ namespace IWNLP.Lemmatizer.Evaluation
                     CoNLLToken token = sentence.Tokens[j];
                     if (token.POS == "NN")
                     {
+                        if (token.Lemma.Contains("|") || token.Lemma.Contains("_") || (token.Lemma == "unknown" && token.Form != "unknown")) { continue; }
                         if (!(token.PredictedLemmas == null || token.PredictedLemmas.Count == 0))
                         {
                             if (token.PredictedLemmas.Count == 1)

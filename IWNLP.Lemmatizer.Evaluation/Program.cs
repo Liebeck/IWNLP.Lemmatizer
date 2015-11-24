@@ -14,12 +14,15 @@ namespace IWNLP.Lemmatizer.Evaluation
             //Lemmatizer a = new Lemmatizer();
             //a.CreateMapping(AppSettingsWrapper.IWNLPXMLPath);
             //a.Save(AppSettingsWrapper.IWNLPLemmatizerXMLPath);
+            //Console.OutputEncoding = Encoding.UTF8;
 
             CorpusEvaluation evaluation = new CorpusEvaluation();
             var result1 = evaluation.Evaluate(AppSettingsWrapper.IWNLPTiger, "IWNLP - Tiger");
-            Console.WriteLine(result1.GetDetailedLookupInformation());
+            //Console.WriteLine(result1.GetDetailedLookupInformation());
             var result2 = evaluation.Evaluate(AppSettingsWrapper.IWNLPTueba, "IWNLP - TüBa-D/Z");
+            //Console.WriteLine(result2.GetDetailedLookupInformation());
             var result3 = evaluation.Evaluate(AppSettingsWrapper.IWNLPHdt, "IWNLP - HDT");
+            //Console.WriteLine(result3.GetDetailedLookupInformation());
 
             evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPTiger, "IWNLP + Keep: Tiger");
             evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPTueba, "IWNLP + Keep: Tüba-D/Z");
