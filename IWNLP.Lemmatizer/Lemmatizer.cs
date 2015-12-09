@@ -128,18 +128,18 @@ namespace IWNLP.Lemmatizer
                     AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural1Person, entry.Text, POS.Verb);
                     AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural2Person, entry.Text, POS.Verb);
                     AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural3Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular1Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular2Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular3Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural1Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural2Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural3Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular1Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular2Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular3Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural1Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural2Person, entry.Text, POS.Verb);
-                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural3Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular1Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular2Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular3Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural1Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural2Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural3Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular1Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular2Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular3Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural1Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural2Person, entry.Text, POS.Verb);
+                    AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural3Person, entry.Text, POS.Verb);
 
                     if (verbConjugation.PräsensAktivIndikativ_Singular1Person_Nebensatzkonjugation != null)
                     {
@@ -155,18 +155,18 @@ namespace IWNLP.Lemmatizer
                         AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
                         AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
                         AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
-                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
                     }
                 }
                 else if (entry is AdjectivalDeclension)
