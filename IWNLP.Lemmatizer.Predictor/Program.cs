@@ -15,28 +15,32 @@ namespace IWNLP.Lemmatizer.Predictor
 
         static void Main(string[] args)
         {
+            Lemmatizer a = new Lemmatizer();
+            a.CreateMapping(AppSettingsWrapper.IWNLPXMLPath);
+            a.Save(AppSettingsWrapper.IWNLPPath);
+
             TreeTagger treeTagger = new TreeTagger();
-            MateTools mate = new MateTools();
-            mate.InitMateTools();
+            //MateTools mate = new MateTools();
+            //mate.InitMateTools();
 
             List<CoNLLSentence> tiger = XMLSerializer.Deserialize<List<CoNLLSentence>>(AppSettingsWrapper.TigerPathUntagged);
             List<CoNLLSentence> tueba = XMLSerializer.Deserialize<List<CoNLLSentence>>(AppSettingsWrapper.TuebaPathUntagged);
             List<CoNLLSentence> hdt = XMLSerializer.Deserialize<List<CoNLLSentence>>(AppSettingsWrapper.HdtPathUntagged);
 
-            LemmatizeTreeTagger(tiger, AppSettingsWrapper.TreeTaggerTiger, treeTagger);
-            LemmatizeTreeTagger(tueba, AppSettingsWrapper.TreeTaggerTueba, treeTagger);
-            LemmatizeTreeTagger(hdt, AppSettingsWrapper.TreeTaggerHdt, treeTagger);
+            //LemmatizeTreeTagger(tiger, AppSettingsWrapper.TreeTaggerTiger, treeTagger);
+            //LemmatizeTreeTagger(tueba, AppSettingsWrapper.TreeTaggerTueba, treeTagger);
+            //LemmatizeTreeTagger(hdt, AppSettingsWrapper.TreeTaggerHdt, treeTagger);
 
             LemmatizeIWNLP(tiger, AppSettingsWrapper.IWNLPTiger);
             LemmatizeIWNLP(tueba, AppSettingsWrapper.IWNLPTueba);
             LemmatizeIWNLP(hdt, AppSettingsWrapper.IWNLPHdt);
 
-            LemmatizeMorphy(tiger, AppSettingsWrapper.MorphyTiger);
-            LemmatizeMorphy(tueba, AppSettingsWrapper.MorphyTueba);
-            LemmatizeMorphy(hdt, AppSettingsWrapper.MorphyHdt);
+            //LemmatizeMorphy(tiger, AppSettingsWrapper.MorphyTiger);
+            //LemmatizeMorphy(tueba, AppSettingsWrapper.MorphyTueba);
+            //LemmatizeMorphy(hdt, AppSettingsWrapper.MorphyHdt);
 
-            LemmatizeMate(tueba, AppSettingsWrapper.MateTueba, mate);
-            LemmatizeMate(hdt, AppSettingsWrapper.MateHdt, mate);
+            //LemmatizeMate(tueba, AppSettingsWrapper.MateTueba, mate);
+            //LemmatizeMate(hdt, AppSettingsWrapper.MateHdt, mate);
 
         }
 

@@ -20,9 +20,17 @@ namespace IWNLP.Lemmatizer.Predictor
                 if (token.POS == "NN")
                 {
                     List<POS> pos = new List<POS>() { POS.Noun, POS.X };
-                    if (iwnlp.ContainsEntry(token.Form, pos))
+                    if (iwnlp.ContainsEntry(token.Form, POS.Noun))
                     {
-                        token.PredictedLemmas = iwnlp.GetLemmas(token.Form, pos);
+                        token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.Noun);
+                    }
+                    else if (iwnlp.ContainsEntry(token.Form, POS.X))
+                    {
+                        token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.X);
+                    }
+                    else if (iwnlp.ContainsEntry(token.Form, POS.AdjectivalDeclension))
+                    {
+                        token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.AdjectivalDeclension);
                     }
                     else if(iwnlp.ContainsEntry(token.Form, pos, true))
                     {
@@ -37,10 +45,26 @@ namespace IWNLP.Lemmatizer.Predictor
                         {
                             token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.Adjective);
                         }
-                        else if (iwnlp.ContainsEntry(token.Form,true)) 
+                        else if (iwnlp.ContainsEntry(token.Form, POS.Adjective, true))
                         {
-                            token.PredictedLemmas = iwnlp.GetLemmas(token.Form, true);
+                            token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.Adjective, true);
                         }
+                        else if (iwnlp.ContainsEntry(token.Form, POS.Noun, true))
+                        {
+                            token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.Noun, true);
+                        }
+                        else if (iwnlp.ContainsEntry(token.Form, POS.X, true))
+                        {
+                            token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.X, true);
+                        }
+                        else if (iwnlp.ContainsEntry(token.Form, POS.Verb, true))
+                        {
+                            token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.Verb, true);
+                        }
+                        //else if (iwnlp.ContainsEntry(token.Form,true)) 
+                        //{
+                        //    token.PredictedLemmas = iwnlp.GetLemmas(token.Form, true);
+                        //}
                     }
                     else if (token.POS.StartsWith("V"))
                     {
@@ -48,6 +72,11 @@ namespace IWNLP.Lemmatizer.Predictor
                         {
                             token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.Verb, true);
                         }
+                            // test
+                        //else if (iwnlp.ContainsEntry(token.Form, true))
+                        //{
+                        //    token.PredictedLemmas = iwnlp.GetLemmas(token.Form, true);
+                        //}
                     }
                 }
             }

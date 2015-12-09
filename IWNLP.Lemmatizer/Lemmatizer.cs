@@ -128,6 +128,19 @@ namespace IWNLP.Lemmatizer
                     AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural1Person, entry.Text, POS.Verb);
                     AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural2Person, entry.Text, POS.Verb);
                     AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural3Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular1Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular2Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular3Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural1Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural2Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural3Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular1Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular2Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular3Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural1Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural2Person, entry.Text, POS.Verb);
+                    //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural3Person, entry.Text, POS.Verb);
+
                     if (verbConjugation.PräsensAktivIndikativ_Singular1Person_Nebensatzkonjugation != null)
                     {
                         AddFormsToDictionary(verbConjugation.PräsensAktivIndikativ_Singular1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
@@ -142,10 +155,43 @@ namespace IWNLP.Lemmatizer
                         AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
                         AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
                         AddFormsToDictionary(verbConjugation.PräteritumAktivIndikativ_Plural3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Singular3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräsensAktivKonjunktiv_Plural3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Singular3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural2Person_Nebensatzkonjugation, entry.Text, POS.Verb);
+                        //AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural3Person_Nebensatzkonjugation, entry.Text, POS.Verb);
                     }
+                }
+                else if (entry is AdjectivalDeclension)
+                {
+                    AdjectivalDeclension adjectivalDeclension = (AdjectivalDeclension)entry;
+                    AddFormsToDictionary(adjectivalDeclension.NominativSingular, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.GenitivSingular, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.DativSingular, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.AkkusativSingular, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.NominativPlural, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.GenitivPlural, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.DativPlural, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.AkkusativPlural, entry.Text, POS.AdjectivalDeclension);
+                    AddAllInflectionsToDictionary(adjectivalDeclension.NominativSingularSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddAllInflectionsToDictionary(adjectivalDeclension.GenitivSingularSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddAllInflectionsToDictionary(adjectivalDeclension.DativSingularSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddAllInflectionsToDictionary(adjectivalDeclension.AkkusativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddAllInflectionsToDictionary(adjectivalDeclension.NominativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddAllInflectionsToDictionary(adjectivalDeclension.GenitivPluralSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddAllInflectionsToDictionary(adjectivalDeclension.DativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddAllInflectionsToDictionary(adjectivalDeclension.AkkusativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
                 }
                 else if (entry is AdjectiveDeclination)
                 {
+                    #region Adjective
                     AddToDictionary(entry.Text, entry.Text, POS.Adjective);
                     AdjectiveDeclination adjectiveDeclination = (AdjectiveDeclination)entry;
                     AddFormsToDictionary(adjectiveDeclination.PositivMaskulinumNominativStark, entry.Text, POS.Adjective);
@@ -300,6 +346,7 @@ namespace IWNLP.Lemmatizer
                     AddFormsToDictionary(adjectiveDeclination.SuperlativPluralGenitivGemischt, entry.Text, POS.Adjective);
                     AddFormsToDictionary(adjectiveDeclination.SuperlativPluralDativGemischt, entry.Text, POS.Adjective);
                     AddFormsToDictionary(adjectiveDeclination.SuperlativPluralAkkusativGemischt, entry.Text, POS.Adjective);
+                    #endregion
                 }
                 else
                 {
@@ -491,11 +538,11 @@ namespace IWNLP.Lemmatizer
         {
             if (ignoreCase)
             {
-                return this.lemmaMapping[word.ToLower()].Select(x => x.Lemma).ToList();
+                return this.lemmaMapping[word.ToLower()].Select(x => x.Lemma).Distinct().ToList();
             }
             else
             {
-                return this.lemmaMapping[word.ToLower()].Where(x => x.Form == word).Select(x => x.Lemma).ToList();
+                return this.lemmaMapping[word.ToLower()].Where(x => x.Form == word).Select(x => x.Lemma).Distinct().ToList();
             }
 
         }
@@ -514,7 +561,7 @@ namespace IWNLP.Lemmatizer
             {
                 items = items.Where(x => x.Form == word).ToList(); // case sensitive comparison
             }
-            return items.Select(x => x.Lemma).ToList();
+            return items.Select(x => x.Lemma).Distinct().ToList();
         }
 
         public List<String> GetLemmas(String word, POS pos)
@@ -536,7 +583,7 @@ namespace IWNLP.Lemmatizer
             {
                 lemmas = lemmas.Union<String>(this.GetLemmas(word, postItem, ignoreCase)).ToList();
             }
-            return lemmas;
+            return lemmas.Distinct().ToList();
         }
 
 
