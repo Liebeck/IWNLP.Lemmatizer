@@ -34,10 +34,44 @@ namespace IWNLP.Lemmatizer.Predictor
             for (int i = 0; i < sentence.Tokens.Count; i++)
             {
                 CoNLLToken token = sentence.Tokens[i];
-                if(morphyDictionary.ContainsKey(token.Form))
+                if (token.POS == "NN")
                 {
-                    token.PredictedLemmas = new List<string>();
-                    token.PredictedLemmas = morphyDictionary[token.Form];
+                    if (morphyDictionary.ContainsKey(token.Form))
+                    {
+                        token.PredictedLemmas = new List<string>();
+                        token.PredictedLemmas = morphyDictionary[token.Form];
+                    }
+                    //else if (morphyDictionary.ContainsKey(token.Form.ToLower())) // adding a lower case comparison worsens the results
+                    //{
+                    //    token.PredictedLemmas = new List<string>();
+                    //    token.PredictedLemmas = morphyDictionary[token.Form.ToLower()];
+                    //}
+                }
+                else if (token.POS == "ADJA" || token.POS == "ADJD")
+                {
+                    if (morphyDictionary.ContainsKey(token.Form))
+                    {
+                        token.PredictedLemmas = new List<string>();
+                        token.PredictedLemmas = morphyDictionary[token.Form];
+                    }
+                    else if (morphyDictionary.ContainsKey(token.Form.ToLower()))
+                    {
+                        token.PredictedLemmas = new List<string>();
+                        token.PredictedLemmas = morphyDictionary[token.Form.ToLower()];
+                    }
+                }
+                else if (token.POS.StartsWith("V"))
+                {
+                    if (morphyDictionary.ContainsKey(token.Form))
+                    {
+                        token.PredictedLemmas = new List<string>();
+                        token.PredictedLemmas = morphyDictionary[token.Form];
+                    }
+                    else if (morphyDictionary.ContainsKey(token.Form.ToLower()))
+                    {
+                        token.PredictedLemmas = new List<string>();
+                        token.PredictedLemmas = morphyDictionary[token.Form.ToLower()];
+                    }
                 }
             }
         }

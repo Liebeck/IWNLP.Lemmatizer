@@ -96,7 +96,7 @@ namespace IWNLP.Lemmatizer.Predictor
             {
                 CoNLLSentence sentence = corpus[i];
                 morphy.ProcessSentence(sentence);
-                Console.WriteLine(i);
+                //Console.WriteLine(i);
             }
             XMLSerializer.Serialize<List<CoNLLSentence>>(corpus, exportPath);
 
