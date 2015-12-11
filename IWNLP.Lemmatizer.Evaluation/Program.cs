@@ -61,6 +61,11 @@ namespace IWNLP.Lemmatizer.Evaluation
             evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyTueba, AppSettingsWrapper.TreeTaggerTueba, "Morphy + TreeTagger: TüBa-D/Z");
             evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyHdt, AppSettingsWrapper.TreeTaggerHdt, "Morphy + TreeTagger: HDT");
 
+            Console.Beep(2000, 400);
+            Console.Beep(2000, 400);
+            Console.Beep(2000, 400);
+            Console.WriteLine();
+            Console.WriteLine("Evaluation completed");
             Console.ReadLine();
         }
     }
