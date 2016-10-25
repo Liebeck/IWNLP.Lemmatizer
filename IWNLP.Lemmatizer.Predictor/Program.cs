@@ -15,10 +15,6 @@ namespace IWNLP.Lemmatizer.Predictor
 
         static void Main(string[] args)
         {
-            Lemmatizer a = new Lemmatizer();
-            a.CreateMapping(AppSettingsWrapper.IWNLPXMLPath);
-            a.Save(AppSettingsWrapper.IWNLPPath);
-
             TreeTagger treeTagger = new TreeTagger();
             //MateTools mate = new MateTools();
             //mate.InitMateTools();

@@ -88,11 +88,6 @@ namespace IWNLP.Lemmatizer.Predictor
             get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPPath"]; }
         }
 
-        public static String IWNLPXMLPath
-        {
-            get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPXMLPath"]; }
-        }
-
 
         public class MateTools
         {
