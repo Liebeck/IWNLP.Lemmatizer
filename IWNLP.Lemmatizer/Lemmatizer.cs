@@ -180,14 +180,22 @@ namespace IWNLP.Lemmatizer
                     AddFormsToDictionary(adjectivalDeclension.GenitivPlural, entry.Text, POS.AdjectivalDeclension);
                     AddFormsToDictionary(adjectivalDeclension.DativPlural, entry.Text, POS.AdjectivalDeclension);
                     AddFormsToDictionary(adjectivalDeclension.AkkusativPlural, entry.Text, POS.AdjectivalDeclension);
-                    AddAllInflectionsToDictionary(adjectivalDeclension.NominativSingularSchwach, entry.Text, POS.AdjectivalDeclension);
-                    AddAllInflectionsToDictionary(adjectivalDeclension.GenitivSingularSchwach, entry.Text, POS.AdjectivalDeclension);
-                    AddAllInflectionsToDictionary(adjectivalDeclension.DativSingularSchwach, entry.Text, POS.AdjectivalDeclension);
-                    AddAllInflectionsToDictionary(adjectivalDeclension.AkkusativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
-                    AddAllInflectionsToDictionary(adjectivalDeclension.NominativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
-                    AddAllInflectionsToDictionary(adjectivalDeclension.GenitivPluralSchwach, entry.Text, POS.AdjectivalDeclension);
-                    AddAllInflectionsToDictionary(adjectivalDeclension.DativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
-                    AddAllInflectionsToDictionary(adjectivalDeclension.AkkusativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.NominativSingularSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.GenitivSingularSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.DativSingularSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.AkkusativSingularSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.NominativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.GenitivPluralSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.DativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.AkkusativPluralSchwach, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.NominativSingularGemischt, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.GenitivSingularGemischt, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.DativSingularGemischt, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.AkkusativSingularGemischt, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.NominativPluralGemischt, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.GenitivPluralGemischt, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.DativPluralGemischt, entry.Text, POS.AdjectivalDeclension);
+                    AddFormsToDictionary(adjectivalDeclension.AkkusativPluralGemischt, entry.Text, POS.AdjectivalDeclension);
                 }
                 else if (entry is AdjectiveDeclination)
                 {
