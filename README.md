@@ -6,7 +6,7 @@ IWNLP is a dictionary-based lemmatizer for the German language. It is based on t
 More details can be found at www.iwnlp.com
 
 # How to run IWNLP.Lemmatizer
-# Make sure that you followed the steps from [IWNLP](https://github.com/Liebeck/IWNLP) regarding the creation of a parsed XML Wiktionary file.
+* Make sure that you followed the steps from [IWNLP](https://github.com/Liebeck/IWNLP) regarding the creation of a parsed XML Wiktionary file.
 * Clone IWNLP.Lemmatizer and build it
 * Start IWNLP.Lemmatizer.exe with two parameters: Path to parsed Wiktionary dump, path to the export file. For instance
 ``` bash
