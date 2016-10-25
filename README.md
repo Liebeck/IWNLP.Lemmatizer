@@ -14,7 +14,7 @@ IWNLP.Parser.exe "c:\\parsedIWNLP_latest.xml" "c:\\IWNLP.Lemmatizer_latest.xml"
 ```
 
 # Citation
-Please include the following BibTex if you use IWNLP in your work:
+Please include the following BibTeX if you use IWNLP in your work:
 ``` bash
 @InProceedings{liebeck-conrad:2015:ACL-IJCNLP,
   author    = {Liebeck, Matthias  and  Conrad, Stefan},
