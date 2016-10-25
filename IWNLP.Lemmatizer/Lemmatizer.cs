@@ -12,7 +12,6 @@ namespace IWNLP.Lemmatizer
 {
     public class Lemmatizer
     {
-        //protected Dictionary<String, List<String>> lemmaMapping;
         protected Dictionary<String, List<LemmatizerItem>> lemmaMapping;
 
         /// <summary>
@@ -22,27 +21,7 @@ namespace IWNLP.Lemmatizer
         public void CreateMapping(String path)
         {
             List<Entry> deWiktionaryEntries = XMLSerializer.Deserialize<List<Entry>>(path);
-            //this.lemmaMapping = new Dictionary<string, List<string>>();
             this.lemmaMapping = new Dictionary<string, List<LemmatizerItem>>();
-
-            //var verbCount = deWiktionaryEntries.Count(x => x is Verb);
-            //var verbCount1 = deWiktionaryEntries.Count(x => x is Adjective);
-            //var verbCount2 = deWiktionaryEntries.Count(x => x is VerbConjugation);
-            //var verbCount3 = deWiktionaryEntries.Count(x => x is AdjectiveDeclination);
-            //var verbCount4 = deWiktionaryEntries.Count(x => x is Noun);
-
-            //var count3 = deWiktionaryEntries.Select(x => x.Text).Distinct().Count();
-            //for (int i = 0; i < deWiktionaryEntries.Count; i++)
-            //{
-            //    if (deWiktionaryEntries[i].Text.StartsWith("Flexion:"))
-            //    {
-            //        deWiktionaryEntries[i].Text = deWiktionaryEntries[i].Text.Substring("Flexion:".Length);
-            //    }
-            //}
-
-            //var count = deWiktionaryEntries.Select(x => x.Text).Distinct().Count();
-            //var count2 = deWiktionaryEntries.Where(x => x.Text.Contains(":")).ToList();
-
             foreach (Entry entry in deWiktionaryEntries)
             {
                 if (entry.Text.StartsWith("Flexion:"))
@@ -105,7 +84,6 @@ namespace IWNLP.Lemmatizer
                     //AddFormsToDictionary(pronoun.WessenEinzahlM, entry.Text);
                     //AddFormsToDictionary(pronoun.WessenEinzahlMehrzahl, entry.Text);
                     //AddFormsToDictionary(pronoun.WessenEinzahlN, entry.Text);
-
                 }
                 else if (entry is VerbConjugation)
                 {
@@ -140,7 +118,6 @@ namespace IWNLP.Lemmatizer
                     AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural1Person, entry.Text, POS.Verb);
                     AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural2Person, entry.Text, POS.Verb);
                     AddFormsToDictionary(verbConjugation.PräteritumAktivKonjunktiv_Plural3Person, entry.Text, POS.Verb);
-
                     if (verbConjugation.PräsensAktivIndikativ_Singular1Person_Nebensatzkonjugation != null)
                     {
                         AddFormsToDictionary(verbConjugation.PräsensAktivIndikativ_Singular1Person_Nebensatzkonjugation, entry.Text, POS.Verb);
