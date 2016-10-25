@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0DEDDF39-7F84-4081-9E3D-1BEB9D950479}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IWNLP.Lemmatizer</RootNamespace>
     <AssemblyName>IWNLP.Lemmatizer</AssemblyName>
@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GenericXMLSerializer">
       <HintPath>..\packages\GenericXMLSerializer.1.0.0\lib\GenericXMLSerializer.dll</HintPath>
@@ -46,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="POSString.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="WordForm.cs" />
     <Compile Include="Lemmatizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
