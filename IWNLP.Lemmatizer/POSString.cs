@@ -1,4 +1,6 @@
 ﻿using IWNLP.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +11,7 @@ namespace IWNLP.Lemmatizer
 {
     public class LemmatizerItem
     {
+        [JsonConverter(typeof(StringEnumConverter))]
         public POS POS { get; set; }
         public String Form { get; set; }
         public String Lemma { get; set; }

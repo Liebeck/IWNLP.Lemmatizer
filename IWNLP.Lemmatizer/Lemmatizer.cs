@@ -2,6 +2,7 @@
 using IWNLP.Models;
 using IWNLP.Models.Flections;
 using IWNLP.Models.Nouns;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -430,6 +431,17 @@ namespace IWNLP.Lemmatizer
                 Lemmas = x.Value,
             }).ToList();
             XMLSerializer.Serialize<List<WordForm>>(forms, path);
+        }
+
+        public void SaveJson(String path)
+        {
+            List<WordForm> forms = this.lemmaMapping.Select(x => new WordForm()
+            {
+                Form = x.Key,
+                Lemmas = x.Value,
+            }).ToList();
+            String json = JsonConvert.SerializeObject(forms, Formatting.Indented);
+            System.IO.File.WriteAllText(path, json);
         }
 
         /// <summary>
