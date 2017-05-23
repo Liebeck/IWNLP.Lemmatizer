@@ -1,4 +1,5 @@
 # IWNLP.Lemmatizer
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/Liebeck/IWNLP.Lemmatizer/LICENSE.md)
 IWNLP is a dictionary-based lemmatizer for the German language. It is based on the German edition of Wiktionary. IWNLP consists of two parts:
 * [IWNLP](https://github.com/Liebeck/IWNLP): A parser for the German edition of Wiktionary
 * IWNLP.Lemmatizer: A German lemmatizer that uses the output from IWNLP to produce a mapping from an inflected form to a lemma.
