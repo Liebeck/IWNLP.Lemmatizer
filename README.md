@@ -4,7 +4,8 @@ IWNLP is a dictionary-based lemmatizer for the German language. It is based on t
 * [IWNLP](https://github.com/Liebeck/IWNLP): A parser for the German edition of Wiktionary
 * IWNLP.Lemmatizer: A German lemmatizer that uses the output from IWNLP to produce a mapping from an inflected form to a lemma.
 
-More details can be found at www.iwnlp.com
+More details can be found at www.iwnlp.com  
+We also provide a **Python implementation** for the lemmatizer: [IWNLP-py](https://github.com/Liebeck/IWNLP-py)
 
 # How to run IWNLP.Lemmatizer
 * Make sure that you followed the steps from [IWNLP](https://github.com/Liebeck/IWNLP) regarding the creation of a parsed XML Wiktionary file.
