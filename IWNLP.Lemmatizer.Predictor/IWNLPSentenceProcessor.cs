@@ -49,6 +49,14 @@ namespace IWNLP.Lemmatizer.Predictor
                         {
                             token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.Adjective, true);
                         }
+                        else if (iwnlp.ContainsEntry(token.Form, POS.AdjectivalDeclension))
+                        {
+                            token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.AdjectivalDeclension);
+                        }
+                        else if (iwnlp.ContainsEntry(token.Form, POS.AdjectivalDeclension, true))
+                        {
+                            token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.AdjectivalDeclension, true);
+                        }
                         else if (iwnlp.ContainsEntry(token.Form, POS.Noun, true))
                         {
                             token.PredictedLemmas = iwnlp.GetLemmas(token.Form, POS.Noun, true);
