@@ -27,42 +27,45 @@ namespace IWNLP.Lemmatizer.Evaluation
             //var result4 = evaluation.Evaluate(@"d:\\Datasets\\IWNLP\\Corpora\\hdt_tagged_IWNLP_20161020_a.xml", "IWNLP - Tiger");
             //Console.WriteLine(result4.GetDetailedLookupInformation());
 
-            //evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPTiger, "IWNLP + Keep: Tiger");
-            //evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPTueba, "IWNLP + Keep: Tüba-D/Z");
-            //evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPHdt, "IWNLP + Keep: HDT");
+            evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPTiger, "IWNLP + Keep: Tiger");
+            evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPTueba, "IWNLP + Keep: Tüba-D/Z");
+            evaluation.EvaluateWithKeep(AppSettingsWrapper.IWNLPHdt, "IWNLP + Keep: HDT");
 
-            //evaluation.Evaluate(AppSettingsWrapper.MorphyTiger, "Morphy - Tiger");
-            //evaluation.Evaluate(AppSettingsWrapper.MorphyTueba, "Morphy - TüBa-D/Z");
-            //evaluation.Evaluate(AppSettingsWrapper.MorphyHdt, "Morphy - HDT");
+            evaluation.Evaluate(AppSettingsWrapper.MorphyTiger, "Morphy - Tiger");
+            evaluation.Evaluate(AppSettingsWrapper.MorphyTueba, "Morphy - TüBa-D/Z");
+            evaluation.Evaluate(AppSettingsWrapper.MorphyHdt, "Morphy - HDT");
 
-            //evaluation.EvaluateWithKeep(AppSettingsWrapper.MorphyTiger, "Morphy + Keep: Tiger");
-            //evaluation.EvaluateWithKeep(AppSettingsWrapper.MorphyTueba, "Morphy + Keep: Tüba-D/Z");
-            //evaluation.EvaluateWithKeep(AppSettingsWrapper.MorphyHdt, "Morphy + Keep: HDT");
+            evaluation.EvaluateWithKeep(AppSettingsWrapper.MorphyTiger, "Morphy + Keep: Tiger");
+            evaluation.EvaluateWithKeep(AppSettingsWrapper.MorphyTueba, "Morphy + Keep: Tüba-D/Z");
+            evaluation.EvaluateWithKeep(AppSettingsWrapper.MorphyHdt, "Morphy + Keep: HDT");
 
-            //Console.WriteLine("************************");
-            //Console.WriteLine("Mate Tiger ---------");
+            Console.WriteLine("************************");
+            Console.WriteLine("Mate Tiger ---------");
             //evaluation.Evaluate(AppSettingsWrapper.MateTueba, "Mate Tools - TüBa-D/Z");
-            //evaluation.Evaluate(AppSettingsWrapper.MateHdt, "Mate Tools - HDT");
+            PrintNaNResult();
+            evaluation.Evaluate(AppSettingsWrapper.MateHdt, "Mate Tools - HDT");
 
-            //evaluation.Evaluate(AppSettingsWrapper.TreeTaggerTiger, "TreeTagger - Tiger");
-            //evaluation.Evaluate(AppSettingsWrapper.TreeTaggerTueba, "TreeTagger - TüBa-D/Z");
-            //evaluation.Evaluate(AppSettingsWrapper.TreeTaggerHdt, "TreeTagger - HDT");
+            evaluation.Evaluate(AppSettingsWrapper.TreeTaggerTiger, "TreeTagger - Tiger");
+            evaluation.Evaluate(AppSettingsWrapper.TreeTaggerTueba, "TreeTagger - TüBa-D/Z");
+            evaluation.Evaluate(AppSettingsWrapper.TreeTaggerHdt, "TreeTagger - HDT");
 
-            //Console.WriteLine("************************");
-            //Console.WriteLine("IWNLP + Mate Tools: Tiger - -----------");
+            Console.WriteLine("************************");
+            Console.WriteLine("IWNLP + Mate Tools: Tiger - -----------");
             //evaluation.EvaluateTwoResources(AppSettingsWrapper.IWNLPTueba, AppSettingsWrapper.MateTueba, "IWNLP + Mate Tools: TüBa-D/Z");
-            //evaluation.EvaluateTwoResources(AppSettingsWrapper.IWNLPHdt, AppSettingsWrapper.MateHdt, "IWNLP + Mate Tools: HDT");
-            //Console.WriteLine("Morphy + Mate Tools: Tiger - -----------");
+            PrintNaNResult();
+            evaluation.EvaluateTwoResources(AppSettingsWrapper.IWNLPHdt, AppSettingsWrapper.MateHdt, "IWNLP + Mate Tools: HDT");
+            Console.WriteLine("Morphy + Mate Tools: Tiger - -----------");
+            PrintNaNResult();
             //evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyTueba, AppSettingsWrapper.MateTueba, "Morphy + Mate Tools: TüBa-D/Z");
-            //evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyHdt, AppSettingsWrapper.MateHdt, "Morphy + Mate Tools: HDT");
+            evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyHdt, AppSettingsWrapper.MateHdt, "Morphy + Mate Tools: HDT");
 
-            //evaluation.EvaluateTwoResources(AppSettingsWrapper.IWNLPTiger, AppSettingsWrapper.TreeTaggerTiger, "IWNLP + TreeTagger: Tiger");
-            //evaluation.EvaluateTwoResources(AppSettingsWrapper.IWNLPTueba, AppSettingsWrapper.TreeTaggerTueba, "IWNLP + TreeTagger: TüBa-D/Z");
-            //evaluation.EvaluateTwoResources(AppSettingsWrapper.IWNLPHdt, AppSettingsWrapper.TreeTaggerHdt, "IWNLP + TreeTagger: HDT");
+            evaluation.EvaluateTwoResources(AppSettingsWrapper.IWNLPTiger, AppSettingsWrapper.TreeTaggerTiger, "IWNLP + TreeTagger: Tiger");
+            evaluation.EvaluateTwoResources(AppSettingsWrapper.IWNLPTueba, AppSettingsWrapper.TreeTaggerTueba, "IWNLP + TreeTagger: TüBa-D/Z");
+            evaluation.EvaluateTwoResources(AppSettingsWrapper.IWNLPHdt, AppSettingsWrapper.TreeTaggerHdt, "IWNLP + TreeTagger: HDT");
 
-            //evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyTiger, AppSettingsWrapper.TreeTaggerTiger, "Morphy + TreeTagger: Tiger");
-            //evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyTueba, AppSettingsWrapper.TreeTaggerTueba, "Morphy + TreeTagger: TüBa-D/Z");
-            //evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyHdt, AppSettingsWrapper.TreeTaggerHdt, "Morphy + TreeTagger: HDT");
+            evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyTiger, AppSettingsWrapper.TreeTaggerTiger, "Morphy + TreeTagger: Tiger");
+            evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyTueba, AppSettingsWrapper.TreeTaggerTueba, "Morphy + TreeTagger: TüBa-D/Z");
+            evaluation.EvaluateTwoResources(AppSettingsWrapper.MorphyHdt, AppSettingsWrapper.TreeTaggerHdt, "Morphy + TreeTagger: HDT");
 
             Console.Beep(2000, 400);
             Console.Beep(2000, 400);
@@ -71,5 +74,15 @@ namespace IWNLP.Lemmatizer.Evaluation
             Console.WriteLine("Evaluation completed");
             Console.ReadLine();
         }
+
+        static void PrintNaNResult()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine("Nouns: NaN");
+            stringBuilder.AppendLine("Verbs: NaN");
+            stringBuilder.AppendLine("Adjectives: NaN");
+            Console.WriteLine(stringBuilder.ToString());
+        }
+
     }
 }

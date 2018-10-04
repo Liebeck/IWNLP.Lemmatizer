@@ -15,7 +15,7 @@ namespace IWNLP.Lemmatizer.Predictor
 
         static void Main(string[] args)
         {
-            TreeTagger treeTagger = new TreeTagger();
+            //TreeTagger treeTagger = new TreeTagger();
             //MateTools mate = new MateTools();
             //mate.InitMateTools();
 
