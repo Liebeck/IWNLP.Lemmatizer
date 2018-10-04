@@ -40,18 +40,18 @@ namespace IWNLP.Lemmatizer.Predictor
 
         }
 
-        static void LemmatizeMate(List<CoNLLSentence> corpus, String exportPath, MateTools mateTools)
-        {
-            int count = corpus.Count;
-            for (int i = 0; i < count; i++)
-            {
-                CoNLLSentence sentence = corpus[i];
-                mateTools.ProcessSentence(sentence);
-                Console.WriteLine(i);
-            }
-            XMLSerializer.Serialize<List<CoNLLSentence>>(corpus, exportPath);
+        //static void LemmatizeMate(List<CoNLLSentence> corpus, String exportPath, MateTools mateTools)
+        //{
+        //    int count = corpus.Count;
+        //    for (int i = 0; i < count; i++)
+        //    {
+        //        CoNLLSentence sentence = corpus[i];
+        //        mateTools.ProcessSentence(sentence);
+        //        Console.WriteLine(i);
+        //    }
+        //    XMLSerializer.Serialize<List<CoNLLSentence>>(corpus, exportPath);
 
-        }
+        //}
 
         static void LemmatizeTreeTagger(List<CoNLLSentence> corpus, String exportPath, TreeTagger treeTagger)
         {
