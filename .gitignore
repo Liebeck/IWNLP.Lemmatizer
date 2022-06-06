@@ -1,3 +1,8 @@
 /packages/GenericXMLSerializer.1.0.0
 /packages/Newtonsoft*
 .vs/*
+IWNLP.Lemmatizer/obj
+IWNLP.Lemmatizer.Converter/obj
+IWNLP.Lemmatizer.Evaluation/obj
+IWNLP.Lemmatizer.Models/obj
+IWNLP.Lemmatizer.Predictor/obj
