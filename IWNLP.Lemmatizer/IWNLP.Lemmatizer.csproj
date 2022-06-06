@@ -34,9 +34,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GenericXMLSerializer">
-      <HintPath>..\packages\GenericXMLSerializer.1.0.0\lib\GenericXMLSerializer.dll</HintPath>
-    </Reference>
     <Reference Include="IWNLP.Models">
       <HintPath>..\..\IWNLP\IWNLP.Models\bin\Debug\IWNLP.Models.dll</HintPath>
     </Reference>
@@ -62,6 +59,12 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IWNLP.Lemmatizer.Models\IWNLP.Lemmatizer.Models.csproj">
+      <Project>{dcaaf07c-b387-4c13-b18f-812767a828a3}</Project>
+      <Name>IWNLP.Lemmatizer.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
