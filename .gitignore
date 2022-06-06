@@ -7,3 +7,6 @@ IWNLP.Lemmatizer.Evaluation/obj
 IWNLP.Lemmatizer.Models/obj
 IWNLP.Lemmatizer.Predictor/obj
 IWNLP.Lemmatizer/bin
+IWNLP.Lemmatizer.Evaluation/bin
+IWNLP.Lemmatizer.Models/bin
+IWNLP.Lemmatizer.Predictor/bin
