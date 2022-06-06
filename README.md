@@ -12,7 +12,7 @@ We also provide a **Python implementation** for the lemmatizer: [IWNLP-py](https
 * Clone IWNLP.Lemmatizer and build it
 * Start IWNLP.Lemmatizer.exe with three parameters: Path to parsed Wiktionary dump, path to the XML export file, path to the JSON export file. For instance
 ``` bash
-IWNLP.Parser.exe "c:\\parsedIWNLP_latest.xml" "c:\\IWNLP.Lemmatizer_latest.xml" "c:\\IWNLP.Lemmatizer_latest.json"
+IWNLP.Lemmatizer.exe "c:\\parsedIWNLP_latest.xml" "c:\\IWNLP.Lemmatizer_latest.xml" "c:\\IWNLP.Lemmatizer_latest.json"
 ```
 
 # Citation
