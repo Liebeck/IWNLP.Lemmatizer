@@ -1,15 +1,12 @@
 ﻿using IWNLP.Lemmatizer.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IWNLP.Lemmatizer.Converter
 {
     public class CoNLL2009Parser
     {
-        public List<CoNLLSentence> ReadFile(String path, Corpus corpus)
+        public List<CoNLLSentence> ReadFile(string path, Corpus corpus)
         {
             System.IO.StreamReader file = new System.IO.StreamReader(path);
             List<CoNLLSentence> sentences = new List<CoNLLSentence>();
@@ -18,7 +15,7 @@ namespace IWNLP.Lemmatizer.Converter
             CoNLLSentence nextSentence = new CoNLLSentence();
             nextSentence.ID = sentenceNumber++;
             nextSentence.Tokens = new List<CoNLLToken>();
-            String line;
+            string line;
             
             while ((line = file.ReadLine()) != null)
             {
@@ -26,7 +23,7 @@ namespace IWNLP.Lemmatizer.Converter
                 {
                     continue;
                 }
-                if (String.IsNullOrEmpty(line))
+                if (string.IsNullOrEmpty(line))
                 {
                     sentences.Add(nextSentence);
                     nextSentence = new CoNLLSentence();
@@ -35,7 +32,7 @@ namespace IWNLP.Lemmatizer.Converter
                 }
                 else
                 {
-                    String[] values = line.Split(new String[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
+                    string[] values = line.Split(new string[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
                     if (corpus == Corpus.Tiger || corpus == Corpus.HDT)
                     {
                         nextSentence.Tokens.Add(new CoNLLToken()
@@ -48,14 +45,14 @@ namespace IWNLP.Lemmatizer.Converter
                     }
                     else 
                     {
-                        String lemma = values[6];
+                        string lemma = values[6];
                         if (lemma == "#refl") 
                         {
-                            lemma = String.Empty;
+                            lemma = string.Empty;
                         }
                         if (lemma.Contains("#")) 
                         {
-                            lemma = lemma.Replace("#", String.Empty);
+                            lemma = lemma.Replace("#", string.Empty);
                         }
                         nextSentence.Tokens.Add(new CoNLLToken()
                         {

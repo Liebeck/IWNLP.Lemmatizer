@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace IWNLP.Lemmatizer.Evaluation
 {
@@ -60,13 +59,13 @@ namespace IWNLP.Lemmatizer.Evaluation
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine(String.Format("Nouns: {0}/{1} = {2}", this.NounsCorrectlyLemmatizedCount, this.TotalNounCount, String.Format("{0:0.000}", this.NounPercent)));
-            stringBuilder.AppendLine(String.Format("Verbs: {0}/{1} = {2}", this.VerbsCorrectlyLemmatizedCount, this.TotalVerbCount, String.Format("{0:0.000}", this.VerbPercent)));
-            stringBuilder.AppendLine(String.Format("Adjectives: {0}/{1} = {2}", this.AdjectivesCorrectlyLemmatizedCount, this.TotalAdjectiveCount, String.Format("{0:0.000}", this.AdjectivePercent)));
+            stringBuilder.AppendLine(string.Format("Nouns: {0}/{1} = {2}", this.NounsCorrectlyLemmatizedCount, this.TotalNounCount, string.Format("{0:0.000}", this.NounPercent)));
+            stringBuilder.AppendLine(string.Format("Verbs: {0}/{1} = {2}", this.VerbsCorrectlyLemmatizedCount, this.TotalVerbCount, string.Format("{0:0.000}", this.VerbPercent)));
+            stringBuilder.AppendLine(string.Format("Adjectives: {0}/{1} = {2}", this.AdjectivesCorrectlyLemmatizedCount, this.TotalAdjectiveCount, string.Format("{0:0.000}", this.AdjectivePercent)));
             return stringBuilder.ToString();
         }
 
-        public void AddWrongLookup(PartOfSpeech pos, String form, String lemma, List<String> predictedLemma)
+        public void AddWrongLookup(PartOfSpeech pos, string form, string lemma, List<string> predictedLemma)
         {
             switch (pos) 
             {
@@ -82,7 +81,7 @@ namespace IWNLP.Lemmatizer.Evaluation
             }
         }
 
-        public void AddMissingLookup(PartOfSpeech pos, String form, String lemma, List<String> predictedLemma)
+        public void AddMissingLookup(PartOfSpeech pos, string form, string lemma, List<string> predictedLemma)
         {
             switch (pos)
             {
@@ -98,7 +97,7 @@ namespace IWNLP.Lemmatizer.Evaluation
             }
         }
 
-        public void AddAmbiguousLookup(PartOfSpeech pos, String form, String lemma, List<String> predictedLemma)
+        public void AddAmbiguousLookup(PartOfSpeech pos, string form, string lemma, List<string> predictedLemma)
         {
             switch (pos)
             {
@@ -133,7 +132,7 @@ namespace IWNLP.Lemmatizer.Evaluation
             }
         }
 
-        public String GetDetailedLookupInformation() 
+        public string GetDetailedLookupInformation() 
         {
             int topCount = 30;
             StringBuilder stringBuilder = new StringBuilder();
@@ -160,15 +159,15 @@ namespace IWNLP.Lemmatizer.Evaluation
             return stringBuilder.ToString();
         }
 
-        protected String GetTopEntries(List<LookupItem> list, int count) 
+        protected string GetTopEntries(List<LookupItem> list, int count) 
         {
             StringBuilder stringBuilder = new StringBuilder();
-            var topList = list.GroupBy(x => new Tuple<String, String, String>(x.Form, x.Lemma, (x.PredictedLemma != null) ? String.Join(",", x.PredictedLemma.ToArray()) : String.Empty))
+            var topList = list.GroupBy(x => new Tuple<string, string, string>(x.Form, x.Lemma, (x.PredictedLemma != null) ? string.Join(",", x.PredictedLemma.ToArray()) : string.Empty))
                             .OrderByDescending(x => x.Count())
                             .Take(count);
             foreach (var item in topList) 
             {
-                stringBuilder.AppendLine(String.Format("{0}: {1}->{2} !={3}", item.Count(), item.Key.Item1, item.Key.Item2, item.Key.Item3));
+                stringBuilder.AppendLine(string.Format("{0}: {1}->{2} !={3}", item.Count(), item.Key.Item1, item.Key.Item2, item.Key.Item3));
             }
             return stringBuilder.ToString();
         }

@@ -1,39 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IWNLP.Lemmatizer.Converter
+﻿namespace IWNLP.Lemmatizer.Converter
 {
     public class AppSettingsWrapper
     {
-        public static String TigerInputPath
+        public static string TigerInputPath
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TigerInputPath"]; }
         }
 
-        public static String TigerOutputPath
+        public static string TigerOutputPath
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TigerOutputPath"]; }
         }
 
-        public static String TuebaInputPath
+        public static string TuebaInputPath
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TuebaInputPath"]; }
         }
 
-        public static String TuebaOutputPath
+        public static string TuebaOutputPath
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TuebaOutputPath"]; }
         }
 
-        public static String HDTInputPath
+        public static string HDTInputPath
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["HDTInputPath"]; }
         }
 
-        public static String HDTOutputPath
+        public static string HDTOutputPath
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["HDTOutputPath"]; }
         }

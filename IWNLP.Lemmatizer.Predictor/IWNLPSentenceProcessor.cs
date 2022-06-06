@@ -1,10 +1,7 @@
 ﻿using IWNLP.Lemmatizer.Models;
-using System;
+using IWNLP.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IWNLP.Models;
 
 namespace IWNLP.Lemmatizer.Predictor
 {

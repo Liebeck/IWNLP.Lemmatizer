@@ -1,11 +1,6 @@
-﻿using GenericXMLSerializer;
-using IWNLP.Lemmatizer.Models;
+﻿using IWNLP.Lemmatizer.Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IWNLP.Lemmatizer.Predictor
 {
@@ -53,7 +48,7 @@ namespace IWNLP.Lemmatizer.Predictor
 
         //}
 
-        static void LemmatizeTreeTagger(List<CoNLLSentence> corpus, String exportPath, TreeTagger treeTagger)
+        static void LemmatizeTreeTagger(List<CoNLLSentence> corpus, string exportPath, TreeTagger treeTagger)
         {
             int count = corpus.Count;
             for (int j = 0; j < count; j++)
@@ -67,7 +62,7 @@ namespace IWNLP.Lemmatizer.Predictor
 
         }
 
-        static void LemmatizeIWNLP(List<CoNLLSentence> corpus, String exportPath)
+        static void LemmatizeIWNLP(List<CoNLLSentence> corpus, string exportPath)
         {
             Lemmatizer IWNLP = new Lemmatizer();
             IWNLP.Load(AppSettingsWrapper.IWNLPPath);
@@ -83,7 +78,7 @@ namespace IWNLP.Lemmatizer.Predictor
 
         }
 
-        static void LemmatizeMorphy(List<CoNLLSentence> corpus, String exportPath)
+        static void LemmatizeMorphy(List<CoNLLSentence> corpus, string exportPath)
         {
             Morphy morphy = new Morphy();
             morphy.InitMorphy(AppSettingsWrapper.MorphyCSV);

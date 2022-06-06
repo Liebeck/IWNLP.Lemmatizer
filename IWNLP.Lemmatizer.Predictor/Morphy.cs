@@ -3,25 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IWNLP.Lemmatizer.Predictor
 {
     public class Morphy
     {
-        Dictionary<String, List<String>> morphyDictionary = new Dictionary<string, List<String>>();
+        Dictionary<string, List<string>> morphyDictionary = new Dictionary<string, List<string>>();
 
 
-        public void InitMorphy(String pathCSV)
+        public void InitMorphy(string pathCSV)
         {
-            List<String> lines = File.ReadAllLines(pathCSV).Where(x => !x.StartsWith("#") && !String.IsNullOrEmpty(x)).ToList();
-            foreach (String line in lines)
+            List<string> lines = File.ReadAllLines(pathCSV).Where(x => !x.StartsWith("#") && !string.IsNullOrEmpty(x)).ToList();
+            foreach (string line in lines)
             {
-                string[] splitted = line.Split(new String[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
+                string[] splitted = line.Split(new string[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
                 if (!morphyDictionary.ContainsKey(splitted[0]))
                 {
-                    morphyDictionary.Add(splitted[0], new List<String>());
+                    morphyDictionary.Add(splitted[0], new List<string>());
                 }
                 morphyDictionary[splitted[0]].Add(splitted[1]);
             }

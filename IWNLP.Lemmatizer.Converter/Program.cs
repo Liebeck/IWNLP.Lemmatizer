@@ -1,10 +1,5 @@
-﻿using GenericXMLSerializer;
-using IWNLP.Lemmatizer.Models;
-using System;
+﻿using IWNLP.Lemmatizer.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IWNLP.Lemmatizer.Converter
 {
@@ -23,7 +18,6 @@ namespace IWNLP.Lemmatizer.Converter
 
             corpus = parser.ReadFile(AppSettingsWrapper.HDTInputPath, Corpus.HDT);
             XMLSerializer.Serialize<List<CoNLLSentence>>(corpus, AppSettingsWrapper.HDTOutputPath);
-
         }
     }
 }

@@ -1,64 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IWNLP.Lemmatizer.Evaluation
+﻿namespace IWNLP.Lemmatizer.Evaluation
 {
     public class AppSettingsWrapper
     {
-        public static String MateTueba
+        public static string MateTueba
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MateTueba"]; }
         }
 
-        public static String MateHdt
+        public static string MateHdt
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MateHdt"]; }
         }
 
-        public static String IWNLPTiger
+        public static string IWNLPTiger
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPTiger"]; }
         }
 
-        public static String IWNLPTueba
+        public static string IWNLPTueba
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPTueba"]; }
         }
 
-        public static String IWNLPHdt
+        public static string IWNLPHdt
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPHdt"]; }
         }
 
-        public static String TreeTaggerTiger
+        public static string TreeTaggerTiger
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TreeTaggerTiger"]; }
         }
 
-        public static String TreeTaggerTueba
+        public static string TreeTaggerTueba
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TreeTaggerTueba"]; }
         }
 
-        public static String TreeTaggerHdt
+        public static string TreeTaggerHdt
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TreeTaggerHdt"]; }
         }
 
-        public static String MorphyTiger
+        public static string MorphyTiger
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MorphyTiger"]; }
         }
 
-        public static String MorphyTueba
+        public static string MorphyTueba
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MorphyTueba"]; }
         }
 
-        public static String MorphyHdt
+        public static string MorphyHdt
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MorphyHdt"]; }
         }

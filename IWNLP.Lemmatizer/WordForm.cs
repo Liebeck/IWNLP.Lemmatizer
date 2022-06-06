@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace IWNLP.Lemmatizer
 {
@@ -11,7 +7,7 @@ namespace IWNLP.Lemmatizer
     /// </summary>
     public class WordForm
     {
-        public String Form { get; set; }
+        public string Form { get; set; }
         public List<LemmatizerItem> Lemmas { get; set; }
     }
 }

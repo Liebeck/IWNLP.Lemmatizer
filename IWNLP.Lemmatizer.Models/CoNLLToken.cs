@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace IWNLP.Lemmatizer.Models
 {
     public class CoNLLToken
     {
-        public String ID { get; set; }
-        public String Form { get; set; }
-        public String Lemma { get; set; }
-        public String POS { get; set; }
-        public List<String> PredictedLemmas { get; set; }
+        public string ID { get; set; }
+        public string Form { get; set; }
+        public string Lemma { get; set; }
+        public string POS { get; set; }
+        public List<string> PredictedLemmas { get; set; }
 
     }
 }

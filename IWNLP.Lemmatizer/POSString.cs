@@ -1,11 +1,6 @@
 ﻿using IWNLP.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IWNLP.Lemmatizer
 {
@@ -13,8 +8,8 @@ namespace IWNLP.Lemmatizer
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public POS POS { get; set; }
-        public String Form { get; set; }
-        public String Lemma { get; set; }
+        public string Form { get; set; }
+        public string Lemma { get; set; }
 
 
         public override bool Equals(object obj)

@@ -1,25 +1,22 @@
-﻿using GenericXMLSerializer;
+﻿using IWNLP.Lemmatizer.Models;
 using IWNLP.Models;
 using IWNLP.Models.Flections;
 using IWNLP.Models.Nouns;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IWNLP.Lemmatizer
 {
     public class Lemmatizer
     {
-        protected Dictionary<String, List<LemmatizerItem>> lemmaMapping;
+        protected Dictionary<string, List<LemmatizerItem>> lemmaMapping;
 
         /// <summary>
         /// Use the parsed output from IWNLP to create the lemmatization mapping
         /// </summary>
         /// <param name="path">Path to the xml output of IWNLP</param>
-        public void CreateMapping(String path)
+        public void CreateMapping(string path)
         {
             List<Entry> deWiktionaryEntries = XMLSerializer.Deserialize<List<Entry>>(path);
             this.lemmaMapping = new Dictionary<string, List<LemmatizerItem>>();
@@ -91,7 +88,7 @@ namespace IWNLP.Lemmatizer
                     AddToDictionary(entry.Text, entry.Text, POS.Verb);
                     VerbConjugation verbConjugation = (VerbConjugation)entry;
                     AddToDictionary(verbConjugation.PartizipII, entry.Text, POS.Verb);
-                    if (!String.IsNullOrEmpty(verbConjugation.PartizipIIAlternativ))
+                    if (!string.IsNullOrEmpty(verbConjugation.PartizipIIAlternativ))
                     {
                         AddToDictionary(verbConjugation.PartizipIIAlternativ, entry.Text, POS.Verb);
                     }
@@ -369,7 +366,7 @@ namespace IWNLP.Lemmatizer
 
         }
 
-        protected void AddToDictionary(String key, String lemma, POS pos)
+        protected void AddToDictionary(string key, string lemma, POS pos)
         {
             LemmatizerItem val = new LemmatizerItem() { POS = pos, Form = key, Lemma = lemma };
             key = key.ToLower();
@@ -387,7 +384,7 @@ namespace IWNLP.Lemmatizer
             }
         }
 
-        void AddAllInflectionsToDictionary(List<Inflection> inflections, String word, POS pos)
+        void AddAllInflectionsToDictionary(List<Inflection> inflections, string word, POS pos)
         {
             foreach (Inflection inflection in inflections)
             {
@@ -395,17 +392,17 @@ namespace IWNLP.Lemmatizer
             }
         }
 
-        void AddFormsToDictionary(List<String> forms, String word, POS pos)
+        void AddFormsToDictionary(List<string> forms, string word, POS pos)
         {
-            foreach (String form in forms)
+            foreach (string form in forms)
             {
                 AddToDictionary(form, word, pos);
             }
         }
 
-        void AddImperativeFormsToDictionary(List<String> forms, String lemma)
+        void AddImperativeFormsToDictionary(List<string> forms, string lemma)
         {
-            foreach (String imperativ in forms)
+            foreach (string imperativ in forms)
             {
                 if (imperativ.EndsWith("!"))
                 {
@@ -423,7 +420,7 @@ namespace IWNLP.Lemmatizer
         /// Saves IWNLP to the specified path into a XML file
         /// </summary>
         /// <param name="path"></param>
-        public void Save(String path)
+        public void Save(string path)
         {
             List<WordForm> forms = this.lemmaMapping.Select(x => new WordForm()
             {
@@ -433,14 +430,14 @@ namespace IWNLP.Lemmatizer
             XMLSerializer.Serialize<List<WordForm>>(forms, path);
         }
 
-        public void SaveJson(String path)
+        public void SaveJson(string path)
         {
             List<WordForm> forms = this.lemmaMapping.Select(x => new WordForm()
             {
                 Form = x.Key,
                 Lemmas = x.Value,
             }).ToList();
-            String json = JsonConvert.SerializeObject(forms, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(forms, Formatting.Indented);
             System.IO.File.WriteAllText(path, json);
         }
 
@@ -448,7 +445,7 @@ namespace IWNLP.Lemmatizer
         /// Loads IWNLP from the XML file
         /// </summary>
         /// <param name="path"></param>
-        public void Load(String path)
+        public void Load(string path)
         {
             List<WordForm> forms = XMLSerializer.Deserialize<List<WordForm>>(path);
             this.lemmaMapping = forms.ToDictionary(x => x.Form, x => x.Lemmas);
@@ -459,7 +456,7 @@ namespace IWNLP.Lemmatizer
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public bool ContainsEntry(String word)
+        public bool ContainsEntry(string word)
         {
             return this.lemmaMapping.ContainsKey(word.ToLower());
         }
@@ -469,12 +466,12 @@ namespace IWNLP.Lemmatizer
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public bool ContainsEntry(String word, POS pos)
+        public bool ContainsEntry(string word, POS pos)
         {
             return this.ContainsEntry(word, pos, false);
         }
 
-        public bool ContainsEntry(String word, POS pos, bool ignoreCase)
+        public bool ContainsEntry(string word, POS pos, bool ignoreCase)
         {
             if (ignoreCase)
             {
@@ -486,7 +483,7 @@ namespace IWNLP.Lemmatizer
             }
         }
 
-        public bool ContainsEntry(String word, bool ignoreCase)
+        public bool ContainsEntry(string word, bool ignoreCase)
         {
             if (ignoreCase)
             {
@@ -503,12 +500,12 @@ namespace IWNLP.Lemmatizer
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public bool ContainsEntry(String word, List<POS> pos)
+        public bool ContainsEntry(string word, List<POS> pos)
         {
             return ContainsEntry(word, pos, false);
         }
 
-        public bool ContainsEntry(String word, List<POS> pos, bool ignoreCase)
+        public bool ContainsEntry(string word, List<POS> pos, bool ignoreCase)
         {
             foreach (POS posItem in pos)
             {
@@ -526,12 +523,12 @@ namespace IWNLP.Lemmatizer
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public List<String> GetLemmas(String word)
+        public List<string> GetLemmas(string word)
         {
             return this.GetLemmas(word, false);
         }
 
-        public List<String> GetLemmas(String word, bool ignoreCase)
+        public List<string> GetLemmas(string word, bool ignoreCase)
         {
             if (ignoreCase)
             {
@@ -551,7 +548,7 @@ namespace IWNLP.Lemmatizer
         /// </summary>
         /// <param name="word"></param>
         /// <returns></returns>
-        public List<String> GetLemmas(String word, POS pos, bool ignoreCase)
+        public List<string> GetLemmas(string word, POS pos, bool ignoreCase)
         {
             List<LemmatizerItem> items = this.lemmaMapping[word.ToLower()].Where(x => x.POS == pos).ToList(); // the key in the dictionary is case insensitive
             if (!ignoreCase)
@@ -561,24 +558,24 @@ namespace IWNLP.Lemmatizer
             return items.Select(x => x.Lemma).Distinct().ToList();
         }
 
-        public List<String> GetLemmas(String word, POS pos)
+        public List<string> GetLemmas(string word, POS pos)
         {
             return this.GetLemmas(word, pos, false);
         }
 
 
 
-        public List<String> GetLemmas(String word, List<POS> pos)
+        public List<string> GetLemmas(string word, List<POS> pos)
         {
             return this.GetLemmas(word, pos, false);
         }
 
-        public List<String> GetLemmas(String word, List<POS> pos, bool ignoreCase)
+        public List<string> GetLemmas(string word, List<POS> pos, bool ignoreCase)
         {
-            List<String> lemmas = new List<string>();
+            List<string> lemmas = new List<string>();
             foreach (POS postItem in pos)
             {
-                lemmas = lemmas.Union<String>(this.GetLemmas(word, postItem, ignoreCase)).ToList();
+                lemmas = lemmas.Union<string>(this.GetLemmas(word, postItem, ignoreCase)).ToList();
             }
             return lemmas.Distinct().ToList();
         }

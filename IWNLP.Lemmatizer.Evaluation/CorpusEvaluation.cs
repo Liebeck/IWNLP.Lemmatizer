@@ -1,10 +1,7 @@
-﻿using GenericXMLSerializer;
-using IWNLP.Lemmatizer.Models;
+﻿using IWNLP.Lemmatizer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IWNLP.Lemmatizer.Evaluation
 {
@@ -15,16 +12,16 @@ namespace IWNLP.Lemmatizer.Evaluation
         {
             if (token.Lemma.Contains("%aux"))
             {
-                token.Lemma = token.Lemma.Replace("%aux", String.Empty);
+                token.Lemma = token.Lemma.Replace("%aux", string.Empty);
             }
             if (token.Lemma.Contains("%passiv"))
             {
-                token.Lemma = token.Lemma.Replace("%passiv", String.Empty);
+                token.Lemma = token.Lemma.Replace("%passiv", string.Empty);
             }
         }
 
 
-        public DetailedLookupResults Evaluate(String path, String comment)
+        public DetailedLookupResults Evaluate(string path, string comment)
         {
             Console.WriteLine(comment);
             List<CoNLLSentence> sentences = XMLSerializer.Deserialize<List<CoNLLSentence>>(path);
@@ -107,7 +104,7 @@ namespace IWNLP.Lemmatizer.Evaluation
             return result;
         }
 
-        public DetailedLookupResults EvaluateWithKeep(String path, String comment)
+        public DetailedLookupResults EvaluateWithKeep(string path, string comment)
         {
             Console.WriteLine(comment);
             List<CoNLLSentence> sentences = XMLSerializer.Deserialize<List<CoNLLSentence>>(path);
@@ -244,7 +241,7 @@ namespace IWNLP.Lemmatizer.Evaluation
         //    }
         //}
 
-        protected bool IsLowerCaseExactMatch(String goldLemma, List<String> lemmas)
+        protected bool IsLowerCaseExactMatch(string goldLemma, List<string> lemmas)
         {
             if (lemmas == null || lemmas.Count == 0)
             {
@@ -278,7 +275,7 @@ namespace IWNLP.Lemmatizer.Evaluation
 
 
 
-        public DetailedLookupResults EvaluateTwoResources(String path, String path2, String comment)
+        public DetailedLookupResults EvaluateTwoResources(string path, string path2, string comment)
         {
             Console.WriteLine(comment);
             List<CoNLLSentence> sentences = XMLSerializer.Deserialize<List<CoNLLSentence>>(path);

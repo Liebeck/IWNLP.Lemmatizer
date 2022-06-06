@@ -1,89 +1,83 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IWNLP.Lemmatizer.Predictor
+﻿namespace IWNLP.Lemmatizer.Predictor
 {
     public class AppSettingsWrapper
     {
-        public static String TigerPathUntagged
+        public static string TigerPathUntagged
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TigerPathUntagged"]; }
         }
 
-        public static String TuebaPathUntagged
+        public static string TuebaPathUntagged
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TuebaPathUntagged"]; }
         }
 
-        public static String HdtPathUntagged
+        public static string HdtPathUntagged
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["HdtPathUntagged"]; }
         }
 
-        public static String MateTueba
+        public static string MateTueba
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MateTueba"]; }
         }
 
-        public static String MateHdt
+        public static string MateHdt
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MateHdt"]; }
         }
 
-        public static String IWNLPTiger
+        public static string IWNLPTiger
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPTiger"]; }
         }
 
-        public static String IWNLPTueba
+        public static string IWNLPTueba
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPTueba"]; }
         }
 
-        public static String IWNLPHdt
+        public static string IWNLPHdt
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPHdt"]; }
         }
 
-        public static String TreeTaggerTiger
+        public static string TreeTaggerTiger
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TreeTaggerTiger"]; }
         }
 
-        public static String TreeTaggerTueba
+        public static string TreeTaggerTueba
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TreeTaggerTueba"]; }
         }
 
-        public static String TreeTaggerHdt
+        public static string TreeTaggerHdt
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["TreeTaggerHdt"]; }
         }
 
-        public static String MorphyTiger
+        public static string MorphyTiger
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MorphyTiger"]; }
         }
 
-        public static String MorphyTueba
+        public static string MorphyTueba
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MorphyTueba"]; }
         }
 
-        public static String MorphyHdt
+        public static string MorphyHdt
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MorphyHdt"]; }
         }
 
-        public static String MorphyCSV
+        public static string MorphyCSV
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["MorphyCSV"]; }
         }
 
-        public static String IWNLPPath
+        public static string IWNLPPath
         {
             get { return System.Configuration.ConfigurationManager.AppSettings["IWNLPPath"]; }
         }
@@ -91,27 +85,27 @@ namespace IWNLP.Lemmatizer.Predictor
 
         public class MateTools
         {
-            public static String LemmatizerPath
+            public static string LemmatizerPath
             {
                 get { return System.Configuration.ConfigurationManager.AppSettings["MateTools.LemmatizerPath"]; }
             }
 
-            public static String MorphTaggerPath
+            public static string MorphTaggerPath
             {
                 get { return System.Configuration.ConfigurationManager.AppSettings["MateTools.MorphTaggerPath"]; }
             }
 
-            public static String PosTaggerPath
+            public static string PosTaggerPath
             {
                 get { return System.Configuration.ConfigurationManager.AppSettings["MateTools.PosTaggerPath"]; }
             }
 
-            public static String DepTaggerPath
+            public static string DepTaggerPath
             {
                 get { return System.Configuration.ConfigurationManager.AppSettings["MateTools.DepTaggerPath"]; }
             }
 
-            public static String TempPath
+            public static string TempPath
             {
                 get { return System.Configuration.ConfigurationManager.AppSettings["MateTools.TempPath"]; }
             }
@@ -119,17 +113,17 @@ namespace IWNLP.Lemmatizer.Predictor
 
         public class TreeTagger
         {
-            public static String TreeTaggerExePath
+            public static string TreeTaggerExePath
             {
                 get { return System.Configuration.ConfigurationManager.AppSettings["TreeTagger.TreeTaggerExePath"]; }
             }
 
-            public static String TreeTaggerGermanPath
+            public static string TreeTaggerGermanPath
             {
                 get { return System.Configuration.ConfigurationManager.AppSettings["TreeTagger.TreeTaggerGermanPath"]; }
             }
 
-            public static String TreeTaggerTempPath
+            public static string TreeTaggerTempPath
             {
                 get { return System.Configuration.ConfigurationManager.AppSettings["TreeTagger.TreeTaggerTempPath"]; }
             }
